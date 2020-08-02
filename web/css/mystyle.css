@@ -1,0 +1,170 @@
+@font-face {
+    font-family:bellota;
+    src:url('/fonts/Bellota-Italic.otf');
+}
+
+@font-face {
+    font-family:bellota_regular;
+    src:url("/fonts/Bellota-Regular.otf");
+}
+
+*
+{
+    box-sizing: border-box;
+}
+
+html {
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.bg-nav{
+    background-color: #3d348b;
+}
+
+.btn-primary {
+    display: block;
+    color: #fff;
+    background-color:#3d348b;
+    border-color: #3d348b;
+    margin-right: auto;
+    margin-left: auto;
+    width: 120px;
+}
+
+body {
+    background-image: url('/images/background.jpg');
+    background-size: cover;
+    font-family: Quicksand;
+    text-align: justify;
+    font-size: 20px;
+    margin: 0;
+}
+
+header {
+    width: 100%;
+    margin: 0;
+    height: auto;
+    overflow: hidden;
+    color: whitesmoke;
+    background-color:  #5588aa;
+}
+
+.navbar {
+    display: block;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #fff;
+}
+
+.form {
+    display: inline-block;
+    width: 30%;
+    height: 340px;
+    top: 45%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+}
+
+.logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    height: 300px;
+}
+
+.register-login {
+    float: right;
+}
+
+.vertical-menu {
+    width: 200px;
+}
+
+.vertical-menu a {
+    background-color: #cfecf4;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.vertical-menu a:hover {
+    background-color: 	#dcf4f4;
+}
+
+.vertical-menu a.active {
+    background-color: #5588aa; /* Add a green color to the "active/current" link */
+    color: white;
+}
+
+.container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: 0;
+}
+
+.col-4 {
+    background-color: #eeeeee;
+}
+
+.col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.alert {
+    position: relative;
+    padding: .75rem 1.25rem;
+    border: 1px solid transparent;
+    margin-bottom: 0px;
+    border-radius: .25rem;
+}
+
+.alert-success {
+    color: #041316;
+    background-color: #d3f2f8;
+    border-color: #c3e6cb;
+}
+
+.vertical-menu {
+    width: 100%;
+}
+
+.vertical-menu a, .dropdown-btn {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    border: none;
+    background: none;
+    width:100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+}
+
+/*.vertical-menu a:hover, .dropdown-btn:hover {*/
+/*    color: #041316;*/
+/*}*/
+
+.active {
+    background-color: #5588aa;
+    color: #eeeeee;
+}
+
+.dropdown-container {
+    display: none;
+    background-color: #eeeeee;
+    padding-left: 8px;
+}
+
+.fa-caret-down {
+    float: right;
+    padding-right: 8px;
+}
