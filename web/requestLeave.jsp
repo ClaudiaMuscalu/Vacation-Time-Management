@@ -1,10 +1,8 @@
-<%@ page import="com.timemanagement.repository.DepartmentRepository" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="com.timemanagement.model.Department" %>
 <%@ page import="com.timemanagement.service.UserService" %>
 <%@ page import="com.timemanagement.model.User" %>
-<%@ page import="com.timemanagement.repository.LeaveTypeRepository" %>
 <%@ page import="com.timemanagement.model.LeaveType" %>
+<%@ page import="com.timemanagement.service.LeaveTypeService" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
@@ -67,8 +65,8 @@
                 <select name="leavetype" class="form-control" id="exampleFormControlSelect1">
                     <%
 
-                        LeaveTypeRepository leaveTypeRepository = new LeaveTypeRepository();
-                        ArrayList<LeaveType> leaveTypes = leaveTypeRepository.getAll();
+                        LeaveTypeService leaveTypeService = LeaveTypeService.getInstance();
+                        ArrayList<LeaveType> leaveTypes = leaveTypeService.getAll();
 
                         for(LeaveType l: leaveTypes)
                         {

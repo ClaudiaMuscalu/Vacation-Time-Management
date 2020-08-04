@@ -29,4 +29,10 @@ public class DepartmentService {
     public ArrayList<Department> getAll(){
         return departmentRepository.getAll();
     }
+
+    public void add(Department department){ departmentRepository.add(department);}
+
+    public void update(int id, String newName, int managerId){
+        departmentRepository.update(id, newName, managerId);
+    }
 }

@@ -14,8 +14,6 @@ public class UserRepository implements IRepository {
     private static final String User = "root";
     private static final String Password = "1234";
 
-    private static ArrayList<User> users = new ArrayList<>();
-
     @Override
     public User get(int id) {
         User user = null;
@@ -47,10 +45,8 @@ public class UserRepository implements IRepository {
                             resultset.getString("password"));
             }
 
-        } catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
         } finally {
 
             try {
@@ -98,12 +94,9 @@ public class UserRepository implements IRepository {
                         resultset.getString("password"));
             }
 
-        } catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
         } finally {
-
             try {
                 if (connection != null)
                     connection.close();
@@ -144,10 +137,8 @@ public class UserRepository implements IRepository {
 
             statement.executeUpdate();
 
-        } catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
         } finally {
 
             try {
@@ -180,10 +171,8 @@ public class UserRepository implements IRepository {
 
             statement.execute();
 
-        } catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
         } finally {
             try {
                 if (connection != null)
@@ -195,6 +184,56 @@ public class UserRepository implements IRepository {
                 se.printStackTrace();
             }
         }
+    }
+
+
+    public ArrayList<User> getAll()
+    {
+        ArrayList<User> users = new ArrayList<>();
+        String query = "SELECT * FROM users";
+
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        DepartmentRepository departmentRepository = new DepartmentRepository();
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(Url, User, Password);
+            statement = connection.prepareStatement(query);
+
+            ResultSet resultset = statement.executeQuery();
+
+            while (resultset.next()) {
+                User user = new User(
+                        resultset.getInt("user_id"),
+                        resultset.getInt("manager_id"),
+                        resultset.getInt("user_type_code"),
+                        (Department)departmentRepository.get(resultset.getInt("department_id")),
+                        resultset.getString("first_name"),
+                        resultset.getString("last_name"),
+                        resultset.getString("job_name"),
+                        resultset.getString("email"),
+                        resultset.getString("password"));
+                users.add(user);
+
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (connection != null)
+                    connection.close();
+
+                if (statement != null)
+                    statement.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+
+        return users;
     }
 }
 

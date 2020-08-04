@@ -26,7 +26,7 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-4">
+                <div class="col-3">
                     <div class="alert alert-success" role="alert">
                         <h4 class="alert-heading">Manager Access</h4>
                         <hr>
@@ -43,15 +43,14 @@
                     </div>
 
                     <div class="vertical-menu">
-                        <a href="#" class="active">Home</a>
                         <a href="#">Dashboard</a>
 
                         <div class="dropdown">
                         <button href="#"  class="dropdown-btn">Department <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="dropdown-container">
-                                <a href="#">Add department</a>
-                                <a href="#">Manage department</a>
+                                <a href="createDepartment.jsp">Add department</a>
+                                <a href="updateDepartment.jsp">Manage department</a>
                         </div>
                         </div>
 
@@ -59,8 +58,8 @@
                         <button href="#"  class="dropdown-btn">Leave Type <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="dropdown-container">
-                            <a href="#">Add Leave Type</a>
-                            <a href="#">Manage Leave Type</a>
+                            <a href="addLeaveType.jsp">Add Leave Type</a>
+                            <a href="updateLeaveType.jspp">Manage Leave Type</a>
                         </div>
                         </div>
 
@@ -68,8 +67,8 @@
                         <div class="dropdown">
                         <button href="#" class="dropdown-btn">Employees <i class="fa fa-caret-down"></i></button>
                         <div class="dropdown-container">
-                            <a href="#">Add Employee</a>
-                            <a href="#">Manage Employee</a>
+                            <a href="addEmployee.jsp">Add Employee</a>
+                            <a href="manageEmployee.jsp">Manage Employee</a>
                         </div>
                         </div>
 
@@ -77,17 +76,17 @@
                             <button href="#" class="dropdown-btn">Leave Management<i class="fa fa-caret-down"></i>
                             </button>
                             <div class="dropdown-container">
-                                <a href="#">All leaves</a>
-                                <a href="#">Pending leaves</a>
-                                <a href="#">Approved leaves</a>
-                                <a href="#">Not Approved leaves</a>
+                                <a href="allLeaves.jsp">All leaves</a>
+                                <a href="pendingLeaves.jsp">Pending leaves</a>
+                                <a href="approvedLeaves.jsp">Approved leaves</a>
+                                <a href="notApprovedLeaves.jsp">Not Approved leaves</a>
                             </div>
                         </div>
                         <a href="#">Sign Out</a>
                     </div>
                 </div>
 
-                <div class="col-8">
+                <div class="col-9">
                 <p>Content Admin Page</p>
                 </div>
             </div>

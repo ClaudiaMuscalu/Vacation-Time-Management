@@ -10,6 +10,10 @@ public class LeaveType {
         Title = title;
     }
 
+    public LeaveType(String title) {
+        Title = title;
+    }
+
     public int getId() {
         return Id;
     }

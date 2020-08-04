@@ -2,8 +2,6 @@ package com.timemanagement.servlet;
 
 import com.timemanagement.model.Department;
 import com.timemanagement.model.User;
-import com.timemanagement.repository.DepartmentRepository;
-import com.timemanagement.repository.UserRepository;
 import com.timemanagement.service.DepartmentService;
 import com.timemanagement.service.HasherService;
 import com.timemanagement.service.UserService;

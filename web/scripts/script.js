@@ -12,3 +12,8 @@ for (i = 0; i < dropdown.length; i++) {
         }
     });
 }
+
+var button = document.getElementsByClassName("create-depart");
+button.addEventListener("click", function () {
+    alert("Successfully added to database!")
+})

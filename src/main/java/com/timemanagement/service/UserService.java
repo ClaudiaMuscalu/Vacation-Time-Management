@@ -3,6 +3,8 @@ package com.timemanagement.service;
 import com.timemanagement.model.User;
 import com.timemanagement.repository.UserRepository;
 
+import java.util.ArrayList;
+
 public class UserService {
 
     private UserRepository userRepository = new UserRepository();
@@ -32,4 +34,6 @@ public class UserService {
     public void delete(int id){
         userRepository.delete(id);
     }
+
+    public ArrayList<User> getAll(){ return userRepository.getAll(); }
 }
