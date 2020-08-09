@@ -7,12 +7,12 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
 
-    <body style="background-image: url('images/19007.jpg');">
+    <body style="background-image: url('images/background.jpg');">
         <nav class="navbar navbar-expand-lg navbar-light bg-nav">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.jsp">Home</a>
+                        <a class="nav-link" href="approvedLeaves.jsp">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="register.jsp">Register</a>

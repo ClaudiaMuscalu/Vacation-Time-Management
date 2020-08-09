@@ -81,7 +81,7 @@
 
             <div class="form-group">
                 <label>Status leave request</label>
-                <input class="form-control" name="status" value="to be processed" >
+                <input class="form-control" name="status" value="pending approval" >
             </div>
 
             <div class="form-group">

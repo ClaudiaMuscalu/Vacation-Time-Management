@@ -17,7 +17,7 @@ public class Request {
         this.userId = userId;
         this.departmentId = departmentId;
         this.leaveType = leaveType;
-        this.status = status;
+        this.status = statusLeave;
         this.startDate = startDate;
         this.endDate = endDate;
     }
@@ -33,7 +33,9 @@ public class Request {
         this.endDate = endDate;
     }
 
+    public Request() {
 
+    }
 
     public int getId() {
         return id;

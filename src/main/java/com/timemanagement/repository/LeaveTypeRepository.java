@@ -1,6 +1,5 @@
 package com.timemanagement.repository;
 
-import com.timemanagement.model.Department;
 import com.timemanagement.model.LeaveType;
 
 import java.sql.*;

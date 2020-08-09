@@ -1,18 +1,15 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: asus
-  Date: 04.08.2020
-  Time: 22:26
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-
-<h2>Successfully action</h2>
-
+<%@include file="LayoutAdmin.jsp" %>
+                <div class="col-9">
+                    </br> </br>
+                    <h2 style="margin-left: 14em;">Successfully action</h2>
+                    </br>
+                    <img src="images/4639.jpg" style="width: 200px; height: 200px; margin-left: 23em;">
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="scripts/script.js"></script>
+</html>
 </body>
 </html>

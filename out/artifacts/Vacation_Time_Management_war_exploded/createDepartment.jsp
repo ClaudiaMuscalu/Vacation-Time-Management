@@ -59,7 +59,7 @@
                     </button>
                     <div class="dropdown-container">
                         <a href="addLeaveType.jsp">Add Leave Type</a>
-                        <a href="updateDepartment.jsp">Manage Leave Type</a>
+                        <a href="leaveTypes.jsp">Leave Types</a>
                     </div>
                 </div>
 
@@ -67,8 +67,8 @@
                 <div class="dropdown">
                     <button href="#" class="dropdown-btn">Employees <i class="fa fa-caret-down"></i></button>
                     <div class="dropdown-container">
+                        <a href="allEmployees.jsp">All Employees</a>
                         <a href="addEmployee.jsp">Add Employee</a>
-                        <a href="manageEmployee.jsp">Manage Employee</a>
                     </div>
                 </div>
 
@@ -79,7 +79,7 @@
                         <a href="allLeaves.jsp">All leaves</a>
                         <a href="pendingLeaves.jsp">Pending leaves</a>
                         <a href="approvedLeaves.jsp">Approved leaves</a>
-                        <a href="notApprovedLeaves.jsp">Not Approved leaves</a>
+                        <a href="notApprovedLeaves.jsp">Disapproved leaves</a>
                     </div>
                 </div>
                 <a href="#">Sign Out</a>
@@ -88,13 +88,13 @@
 
         <div class="col-9">
             <br> <br>
-            <h3 style="text-align: center">Create a department</h3>
+            <h3 style="margin-left: 15em">Create a department</h3>
             <br>
             <form method="post" action="DepartmentServlet" style="margin-left: 25%;">
 
                 <br>
                 <div class="form-group">
-                    <label>Department Name:</label>
+                    <label>Department name:</label>
                     <input type="text" class="form-control" name="departmentname"/>
                 </div>
 

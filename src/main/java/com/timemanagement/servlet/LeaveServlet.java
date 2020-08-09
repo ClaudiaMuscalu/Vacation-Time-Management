@@ -27,7 +27,7 @@ public class LeaveServlet extends HttpServlet {
         java.util.Date startDate = null;
         java.util.Date endDate = null;
         try {
-             System.out.println("Data este:" + request.getParameter("startdate"));
+
              startDate = dateFormat.parse(request.getParameter("startdate"));
 
         } catch (ParseException e) {
