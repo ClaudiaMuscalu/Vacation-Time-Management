@@ -35,5 +35,9 @@ public class UserService {
         userRepository.delete(id);
     }
 
+    public boolean update(User user){
+        return userRepository.update(user);
+    }
+
     public ArrayList<User> getAll(){ return userRepository.getAll(); }
 }

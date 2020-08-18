@@ -25,9 +25,9 @@
     </nav>
 </header>
 
-<div class="container">
+<div>
     <div class="row">
-        <div class="col-3">
+        <div class="col-sm-3">
             <div class="alert alert-success" role="alert">
                 <h4 class="alert-heading">Manager Access</h4>
                 <hr>
@@ -44,8 +44,6 @@
             </div>
 
             <div class="vertical-menu">
-                <a href="#">Dashboard</a>
-
                 <div class="dropdown">
                     <button href="#"  class="dropdown-btn">Department <i class="fa fa-caret-down"></i>
                     </button>
@@ -87,11 +85,9 @@
             </div>
         </div>
 
-        <div class="col-9">
-            <br> <br>
-            <h3 style="margin-left: 20em">All leaves</h3>
-            </br>
+        <div class="col-sm-9 container-center">
             <table class="table">
+                <caption>All employees</caption>
                 <thead class="thead-light">
                 <tr>
                     <th scope="row">Employee</th>
@@ -114,12 +110,17 @@
                     <td><%=u.getDepartment().getName()%></td>
                     <td><%=u.getRoleId()%></td>
                     <td><%=u.getJobName()%></td>
+                    <% if(userService.get(u.getManagerId()) != null)
+                        {%>
                     <td><%=userService.get(u.getManagerId()).getLastName() + " " +  userService.get(u.getManagerId()).getFirstName()%></td>
+                    <% }else{%>
+                            <td>Manager not available</td>
+                        <%}%>
                     <td>
-                        <a href='Edit2LeaveServlet?id=<%=u.getId()%>'><i class="fa fa-edit" style="margin-right: 3px;"></i>Edit</a>
+                        <a href='Edit2EmployeeServlet?id=<%=u.getId()%>'><i class="fa fa-edit" style="margin-right: 3px;"></i>Edit</a>
                     </td>
                     <td>
-                        <a href='Edit2LeaveServlet?id=<%=u.getId()%>'><i class="fa fa-trash" aria-hidden="true" style="margin-right: 3px;"></i>Delete</a>
+                        <a href='DeleteEmployeeServlet?id=<%=u.getId()%>'><i class="fa fa-trash" aria-hidden="true" style="margin-right: 3px;"></i>Delete</a>
                     </td>
 
                 </tr>

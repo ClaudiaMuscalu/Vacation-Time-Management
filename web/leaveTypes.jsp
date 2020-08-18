@@ -27,9 +27,9 @@
     </nav>
 </header>
 
-<div class="container">
+<div>
     <div class="row">
-        <div class="col-3">
+        <div class="col-sm-3">
             <div class="alert alert-success" role="alert">
                 <h4 class="alert-heading">Manager Access</h4>
                 <hr>
@@ -46,8 +46,6 @@
             </div>
 
             <div class="vertical-menu">
-                <a href="#">Dashboard</a>
-
                 <div class="dropdown">
                     <button href="#"  class="dropdown-btn">Department <i class="fa fa-caret-down"></i>
                     </button>
@@ -85,15 +83,12 @@
                         <a href="notApprovedLeaves.jsp">Disapproved leaves</a>
                     </div>
                 </div>
-                <a href="#">Sign Out</a>
             </div>
         </div>
 
-        <div class="col-9">
-            <br> <br>
-            <h3 style="margin-left: 18em">Types of leave</h3>
-            </br>
+        <div class="col-sm-9 container-center">
             <table class="table">
+                <caption>Types of leave</caption>
                 <thead class="thead-light">
                 <tr>
                     <th scope="row">Id</th>
@@ -112,7 +107,7 @@
                     <td><%=l.getId()%></td>
                     <td><%=l.getTitle()%></td>
                     <td>
-                        <a href='Edit2LeaveServlet?id=<%=l.getId()%>'><i class="fa fa-trash" aria-hidden="true" style="margin-right: 3px;"></i>Delete</a>
+                        <a href='DeleteLeaveTypeServlet?id=<%=l.getId()%>'><i class="fa fa-trash" aria-hidden="true" style="margin-right: 3px;"></i>Delete</a>
                     </td>
                 </tr>
                 <% }

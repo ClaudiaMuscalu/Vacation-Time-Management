@@ -1,6 +1,7 @@
 package com.timemanagement.repository;
 
 import com.timemanagement.model.Department;
+import com.timemanagement.model.Request;
 import com.timemanagement.model.User;
 import com.timemanagement.service.HasherService;
 
@@ -234,6 +235,48 @@ public class UserRepository implements IRepository {
         }
 
         return users;
+    }
+
+    public boolean update(User user)
+    {
+        String updateSQL = "UPDATE users SET department_id = ?, user_type_code = ?," +
+                " first_name = ?, last_name = ?, job_name = ?, manager_id = ? WHERE user_id = ?";
+
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultset = null;
+
+        try {
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(Url, User, Password);
+            statement = connection.prepareStatement(updateSQL);
+
+            statement.setInt(1, user.getDepartment().getId());
+            statement.setInt(2, user.getRoleId());
+            statement.setString(3, user.getFirstName());
+            statement.setString(4, user.getLastName());
+            statement.setString(5, user.getJobName());
+            statement.setInt(6, user.getDepartment().getManagerId());
+            statement.setInt(7, user.getId());
+
+            statement.executeUpdate();
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (connection != null)
+                    connection.close();
+
+                if (statement != null)
+                    statement.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+                return false;
+            }
+        }
+        return true;
     }
 }
 

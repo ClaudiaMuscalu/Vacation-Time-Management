@@ -33,4 +33,6 @@ public class LeaveTypeService {
     public ArrayList<LeaveType> getAll(){
         return leaveTypeRepository.getAll();
     }
+
+    public void delete(int id) { leaveTypeRepository.delete(id);}
 }

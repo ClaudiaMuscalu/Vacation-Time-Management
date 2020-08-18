@@ -10,7 +10,7 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
 
-    <body>
+    <body style="background: url('images/background.jpg');">
             <nav class="navbar navbar-expand-lg navbar-light bg-nav">
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -28,7 +28,7 @@
                 </div>
             </nav>
 
-            <form method="post" action="RegisterServlet" class="form">
+            <form method="post" action="RegisterServlet" class="form" style="margin-top: 15%;">
                 <h3 style="text-align: center">Register</h3>
                 <br>
                 <div class="form-group">

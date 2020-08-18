@@ -25,9 +25,9 @@
     </nav>
 </header>
 
-<div class="container">
+<div>
     <div class="row">
-        <div class="col-3">
+        <div class="col-sm-3">
             <div class="alert alert-success" role="alert">
                 <h4 class="alert-heading">Manager Access</h4>
                 <hr>
@@ -44,8 +44,6 @@
             </div>
 
             <div class="vertical-menu">
-                <a href="#">Dashboard</a>
-
                 <div class="dropdown">
                     <button href="#"  class="dropdown-btn">Department <i class="fa fa-caret-down"></i>
                     </button>
@@ -63,7 +61,6 @@
                         <a href="leaveTypes.jsp">Leave Types</a>
                     </div>
                 </div>
-
 
                 <div class="dropdown">
                     <button href="#" class="dropdown-btn">Employees <i class="fa fa-caret-down"></i></button>
@@ -83,7 +80,6 @@
                         <a href="notApprovedLeaves.jsp">Disapproved leaves</a>
                     </div>
                 </div>
-                <a href="#">Sign Out</a>
             </div>
         </div>
 

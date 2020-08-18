@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="LayoutAdmin.jsp" %>
-                <div class="col-9">
+<div class="col-sm-9 container-center">
                     </br> </br>
                     <h2 style="margin-left: 14em;">Successfully action</h2>
                     </br>
@@ -8,7 +8,7 @@
                 </div>
             </div>
         </div>
-    </body>
+<body style="background-image: url('images/background.jpg');">
     <script src="scripts/script.js"></script>
 </html>
 </body>

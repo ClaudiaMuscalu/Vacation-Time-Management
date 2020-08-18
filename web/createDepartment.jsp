@@ -25,9 +25,9 @@
     </nav>
 </header>
 
-<div class="container">
+<div>
     <div class="row">
-        <div class="col-3">
+        <div class="col-sm-3">
             <div class="alert alert-success" role="alert">
                 <h4 class="alert-heading">Manager Access</h4>
                 <hr>
@@ -82,16 +82,14 @@
                         <a href="notApprovedLeaves.jsp">Disapproved leaves</a>
                     </div>
                 </div>
-                <a href="#">Sign Out</a>
             </div>
         </div>
 
-        <div class="col-9">
-            <br> <br>
-            <h3 style="margin-left: 15em">Create a department</h3>
+        <div class="col-sm-9 container-center">
             <br>
-            <form method="post" action="DepartmentServlet" style="margin-left: 25%;">
-
+            <form method="post" action="DepartmentServlet">
+                <br>
+                <h3 style="text-align: center;">Create a department</h3>
                 <br>
                 <div class="form-group">
                     <label>Department name:</label>

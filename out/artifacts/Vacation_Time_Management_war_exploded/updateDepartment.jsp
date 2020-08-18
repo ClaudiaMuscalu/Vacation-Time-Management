@@ -27,9 +27,9 @@
     </nav>
 </header>
 
-<div class="container">
+<div>
     <div class="row">
-        <div class="col-3">
+        <div class="col-sm-3">
             <div class="alert alert-success" role="alert">
                 <h4 class="alert-heading">Manager Access</h4>
                 <hr>
@@ -46,8 +46,6 @@
             </div>
 
             <div class="vertical-menu">
-                <a href="dashboard.jsp">Dashboard</a>
-
                 <div class="dropdown">
                     <button class="dropdown-btn">Department <i class="fa fa-caret-down"></i>
                     </button>
@@ -62,6 +60,7 @@
                     </button>
                     <div class="dropdown-container">
                         <a href="addLeaveType.jsp">Add Leave Type</a>
+                        <a href="pendingLeaves.jsp">Leave Types</a>
                     </div>
                 </div>
 
@@ -84,16 +83,15 @@
                         <a href="notApprovedLeaves.jsp">Disapproved leaves</a>
                     </div>
                 </div>
-                <a href="#">Sign Out</a>
             </div>
         </div>
 
-        <div class="col-9">
-            <br> <br>
-            <h3 style="margin-left: 15em">Update a department</h3>
+        <div class="col-sm-9 container-center">
             <br>
-            <form method="post" action="UpdateDepartmentServlet" style="margin-left: 25%;">
-
+            <form method="post" action="UpdateDepartmentServlet">
+                <br>
+                <h3 style="text-align: center;">Update a department</h3>
+                <br>
                 <label>The department for update:</label>
                 <select name="departmentid" class="form-control" id="exampleFormControlSelect1">
                     <%

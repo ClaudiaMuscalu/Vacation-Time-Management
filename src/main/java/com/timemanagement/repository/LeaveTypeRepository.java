@@ -86,6 +86,34 @@ public class LeaveTypeRepository implements IRepository
     @Override
     public void delete(int id) {
 
+        String deleteSQL = "DELETE FROM type_of_leave WHERE id = ?";
+
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultset = null;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(Url, User, Password);
+            statement = connection.prepareStatement(deleteSQL);
+
+            statement.setInt(1, id);
+
+            statement.execute();
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (connection != null)
+                    connection.close();
+
+                if (statement != null)
+                    statement.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
     }
 
     public ArrayList<LeaveType> getAll()

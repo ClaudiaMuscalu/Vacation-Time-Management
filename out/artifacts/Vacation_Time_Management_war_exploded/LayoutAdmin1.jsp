@@ -25,9 +25,9 @@
     </nav>
 </header>
 
-<div class="container">
+<div>
     <div class="row">
-        <div class="col-3">
+        <div class="col-sm-3">
             <div class="alert alert-success" role="alert">
                 <h4 class="alert-heading">Manager Access</h4>
                 <hr>
@@ -44,7 +44,7 @@
             </div>
 
             <div class="vertical-menu">
-                <a href="pendingLeaves.jsp" style="margin-right: 3px;">Back<i class="fa fa-arrow-left"></i></a>
+                <a href="adminPage.jsp" style="margin-right: 3px;">Back<i class="fa fa-arrow-left"></i></a>
             </div>
         </div>
 

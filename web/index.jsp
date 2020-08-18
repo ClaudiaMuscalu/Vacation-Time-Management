@@ -7,7 +7,7 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
 
-    <body>
+    <body style="background-image: url('images/background.jpg');">
         <nav class="navbar navbar-expand-lg navbar-light bg-nav">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">

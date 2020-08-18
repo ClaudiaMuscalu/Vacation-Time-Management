@@ -23,9 +23,9 @@
             </nav>
         </header>
 
-        <div class="container">
+        <div>
             <div class="row">
-                <div class="col-3">
+                <div class="col-sm-3">
                     <div class="alert alert-success" role="alert">
                         <h4 class="alert-heading">Manager Access</h4>
                         <hr>
@@ -42,17 +42,13 @@
                     </div>
 
                 <div class="vertical-menu">
-                    <a href="#">Dashboard</a>
-
                     <div class="dropdown">
-                        <button href="#"  class="dropdown-btn">Department <i class="fa fa-caret-down"></i>
-                        </button>
+                        <button href="#"  class="dropdown-btn">Department <i class="fa fa-caret-down"></i></button>
                         <div class="dropdown-container">
                             <a href="createDepartment.jsp">Add department</a>
                             <a href="updateDepartment.jsp">Manage department</a>
                         </div>
                     </div>
-
                     <div class="dropdown">
                         <button href="#"  class="dropdown-btn">Leave Type <i class="fa fa-caret-down"></i>
                         </button>
@@ -61,8 +57,6 @@
                             <a href="leaveTypes.jsp">Leave Types</a>
                         </div>
                     </div>
-
-
                     <div class="dropdown">
                         <button href="#" class="dropdown-btn">Employees <i class="fa fa-caret-down"></i></button>
                         <div class="dropdown-container">
@@ -70,7 +64,6 @@
                             <a href="addEmployee.jsp">Add Employee</a>
                         </div>
                     </div>
-
                     <div class="dropdown">
                         <button class="dropdown-btn">Leave Management<i class="fa fa-caret-down"></i>
                         </button>
@@ -81,22 +74,18 @@
                             <a href="notApprovedLeaves.jsp">Disapproved leaves</a>
                         </div>
                     </div>
-                    <a href="#">Sign Out</a>
                 </div>
             </div>
-
-            <div class="col-9">
-                <br> <br>
-                <h3 style="margin-left: 14em;">Create a new type of leave</h3>
+                <div class="col-sm-9 container-center">
                 <br>
-                <form method="post" action="NewLeaveTypeServlet" style="margin-left: 25%;">
-
+                <form method="post" action="NewLeaveTypeServlet">
+                    <br>
+                    <h3 style="text-align: center;">Create a new type of leave</h3>
                     <br>
                     <div class="form-group">
                         <label>Leave title:</label>
                         <input type="text" class="form-control" name="leavetitle"/>
                     </div>
-
                     <button type="submit"  class="btn btn-lg btn-primary create-depart">Add</button>
                 </form>
             </div>
