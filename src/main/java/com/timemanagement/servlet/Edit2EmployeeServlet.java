@@ -22,6 +22,7 @@ public class Edit2EmployeeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         response.setContentType("text/html");
 
         PrintWriter out = response.getWriter();
@@ -32,9 +33,9 @@ public class Edit2EmployeeServlet extends HttpServlet {
         int id = Integer.parseInt(sid);
 
         UserService userService= UserService.getInstance();
-        User u = userService.get(id);
-
         DepartmentService departmentService = DepartmentService.getInstance();
+
+        User u = userService.get(id);
         ArrayList<Department> departments = departmentService.getAll();
 
         out.println("<div class='col-9'>");

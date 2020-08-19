@@ -25,12 +25,11 @@ public class RegisterServlet extends HttpServlet {
         String firstName = request.getParameter("firstname");
         String lastName = request.getParameter("lastname");
         String email = request.getParameter("email");
-
-        String password = hasherService.hash(request.getParameter("password"));
-
         int departmentId = Integer.parseInt(request.getParameter("department"));
         int userType = Integer.parseInt(request.getParameter("usertype"));
         String jobName = request.getParameter("jobname");
+
+        String password = hasherService.hash(request.getParameter("password"));
 
         Department department = departmentService.get(departmentId);
 

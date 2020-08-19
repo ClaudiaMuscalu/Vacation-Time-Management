@@ -11,11 +11,9 @@ import java.io.IOException;
 
 @WebServlet("/DeleteEmployeeServlet")
 public class DeleteEmployeeServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         String sid = request.getParameter("id");
         int id = Integer.parseInt(sid);
 

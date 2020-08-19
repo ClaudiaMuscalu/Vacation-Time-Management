@@ -27,7 +27,7 @@ public class Edit2LeaveServlet extends HttpServlet {
         request.getRequestDispatcher("LayoutAdmin1.jsp").include(request, response);
 
         String sid = request.getParameter("id");
-        int id=Integer.parseInt(sid);
+        int id = Integer.parseInt(sid);
 
         RequestService requestService= RequestService.getInstance();
         Request r = requestService.get(id);

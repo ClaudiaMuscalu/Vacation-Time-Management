@@ -23,8 +23,9 @@ html {
 }
 
 body {
-    background-image: url('/images/background.jpg');
-    background-size: cover;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
     font-family: SansSerif;
     text-align: justify;
     font-size: 20px;
@@ -66,10 +67,8 @@ header {
 }
 
 .vertical-menu {
-    height: 100%;
     width: 300px;
     position: absolute;
-    display: block;
     z-index: 1;
     background-color: #d3f2f8;
     overflow-x: hidden;

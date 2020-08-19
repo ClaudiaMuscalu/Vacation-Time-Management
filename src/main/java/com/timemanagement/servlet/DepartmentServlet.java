@@ -13,13 +13,12 @@ import java.io.IOException;
 
 @WebServlet("/DepartmentServlet")
 public class DepartmentServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         DepartmentService departmentService = DepartmentService.getInstance();
 
         String departmentName = request.getParameter("departmentname");
         int managerId = Integer.parseInt(request.getParameter("managerid"));
-
 
         Department department = new Department(departmentName, managerId);
         departmentService.add(department);
@@ -29,9 +28,7 @@ public class DepartmentServlet extends HttpServlet {
 
     }
 
-
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)  {
 
     }
 }

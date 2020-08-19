@@ -86,7 +86,6 @@ public class DepartmentRepository implements IRepository {
                 se.printStackTrace();
             }
         }
-
         return department;
     }
 
@@ -126,7 +125,6 @@ public class DepartmentRepository implements IRepository {
                 se.printStackTrace();
             }
         }
-
         return departments;
     }
 
@@ -165,14 +163,12 @@ public class DepartmentRepository implements IRepository {
         }
     }
 
-
     public void update(int id, String newName, int newManager) {
 
         String updateSQL = "UPDATE departments SET name = ?, manager_id = ? WHERE department_id = ?";
 
         Connection connection = null;
         PreparedStatement statement = null;
-        ResultSet resultset = null;
 
         try {
 

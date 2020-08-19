@@ -54,7 +54,6 @@ public class EditLeaveServlet extends HttpServlet {
         r.setEndDate(endDate);
         r.setStatus(status);
 
-
         boolean ok = requestService.update(r);
         if(ok){
             response.sendRedirect("successAction.jsp");

@@ -1,6 +1,5 @@
 package com.timemanagement.model;
 
-import java.time.Duration;
 import java.util.Date;
 
 public class Request {
@@ -12,6 +11,8 @@ public class Request {
     private String status;
     private Date startDate;
     private Date endDate;
+
+    public Request() { }
 
     public Request(int userId, int departmentId, int leaveType, String statusLeave, Date startDate, Date endDate) {
         this.userId = userId;
@@ -31,10 +32,6 @@ public class Request {
         this.status = status;
         this.startDate = startDate;
         this.endDate = endDate;
-    }
-
-    public Request() {
-
     }
 
     public int getId() {

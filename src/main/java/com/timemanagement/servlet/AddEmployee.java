@@ -16,7 +16,7 @@ import java.io.IOException;
 
 @WebServlet("/AddEmployee")
 public class AddEmployee extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         HasherService hasherService = HasherService.getInstance();
         DepartmentService departmentService = DepartmentService.getInstance();
@@ -25,13 +25,12 @@ public class AddEmployee extends HttpServlet {
         String firstName = request.getParameter("firstname");
         String lastName = request.getParameter("lastname");
         String email = request.getParameter("email");
-
-        String password = hasherService.hash("1234");
+        String jobName = request.getParameter("jobname");
 
         int departmentId = Integer.parseInt(request.getParameter("department"));
         int userType = Integer.parseInt(request.getParameter("usertype"));
-        String jobName = request.getParameter("jobname");
 
+        String password = hasherService.hash("1234");
         Department department = departmentService.get(departmentId);
 
         User user = new User(department.getManagerId(),  userType, department, firstName, lastName, jobName, email, password);
@@ -40,9 +39,5 @@ public class AddEmployee extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("email", email);
         response.sendRedirect("successAction.jsp");
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

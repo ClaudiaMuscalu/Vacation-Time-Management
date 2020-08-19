@@ -99,7 +99,6 @@ public class RequestRepository implements IRepository {
                 se.printStackTrace();
             }
         }
-
         return requests;
     }
 

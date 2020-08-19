@@ -233,7 +233,6 @@ public class UserRepository implements IRepository {
                 se.printStackTrace();
             }
         }
-
         return users;
     }
 
@@ -247,7 +246,6 @@ public class UserRepository implements IRepository {
         ResultSet resultset = null;
 
         try {
-
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(Url, User, Password);
             statement = connection.prepareStatement(updateSQL);

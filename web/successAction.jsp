@@ -10,6 +10,6 @@
         </div>
 <body style="background-image: url('images/background.jpg');">
     <script src="scripts/script.js"></script>
-</html>
 </body>
 </html>
+

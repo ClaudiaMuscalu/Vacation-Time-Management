@@ -27,6 +27,8 @@ public class UserService {
         return userRepository.get(email);
     }
 
+    public ArrayList<User> getAll(){ return userRepository.getAll(); }
+
     public void add(User user){
         userRepository.add(user);
     }
@@ -38,6 +40,4 @@ public class UserService {
     public boolean update(User user){
         return userRepository.update(user);
     }
-
-    public ArrayList<User> getAll(){ return userRepository.getAll(); }
 }

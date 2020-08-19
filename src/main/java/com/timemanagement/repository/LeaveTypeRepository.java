@@ -49,6 +49,47 @@ public class LeaveTypeRepository implements IRepository
         return leaveType;
     }
 
+    public ArrayList<LeaveType> getAll()
+    {
+        ArrayList<LeaveType> typesOfLeave = new ArrayList<>();
+
+        String query = "SELECT * FROM type_of_leave";
+
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(Url, User, Password);
+            statement = connection.prepareStatement(query);
+
+            ResultSet resultset = statement.executeQuery();
+
+            while (resultset.next()) {
+                LeaveType leaveType = new LeaveType(resultset.getInt("id"),
+                        resultset.getString("title"));
+                typesOfLeave.add(leaveType);
+
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        } finally {
+
+            try {
+                if (connection != null)
+                    connection.close();
+
+                if (statement != null)
+                    statement.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+
+        return typesOfLeave;
+    }
+
     @Override
     public void add(Object item) {
         LeaveType leaveType = (LeaveType) item;
@@ -115,47 +156,5 @@ public class LeaveTypeRepository implements IRepository
             }
         }
     }
-
-    public ArrayList<LeaveType> getAll()
-    {
-        ArrayList<LeaveType> typesOfLeave = new ArrayList<>();
-
-        String query = "SELECT * FROM type_of_leave";
-
-        Connection connection = null;
-        PreparedStatement statement = null;
-
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection(Url, User, Password);
-            statement = connection.prepareStatement(query);
-
-            ResultSet resultset = statement.executeQuery();
-
-            while (resultset.next()) {
-                LeaveType leaveType = new LeaveType(resultset.getInt("id"),
-                        resultset.getString("title"));
-                typesOfLeave.add(leaveType);
-
-            }
-
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        } finally {
-
-            try {
-                if (connection != null)
-                    connection.close();
-
-                if (statement != null)
-                    statement.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
-            }
-        }
-
-        return typesOfLeave;
-    }
-
 }
 

@@ -26,12 +26,12 @@ public class LeaveTypeService {
         return (LeaveType) leaveTypeRepository.get(id);
     }
 
-    public void add(LeaveType item){
-        leaveTypeRepository.add(item);
-    }
-
     public ArrayList<LeaveType> getAll(){
         return leaveTypeRepository.getAll();
+    }
+
+    public void add(LeaveType item){
+        leaveTypeRepository.add(item);
     }
 
     public void delete(int id) { leaveTypeRepository.delete(id);}

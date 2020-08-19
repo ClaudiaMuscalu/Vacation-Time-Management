@@ -16,7 +16,6 @@ public class RequestService {
     public static RequestService getInstance(){
         if(instance == null){
             instance = new RequestService();
-
         }
         return instance;
     }

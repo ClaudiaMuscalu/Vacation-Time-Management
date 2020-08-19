@@ -15,7 +15,7 @@ import java.io.IOException;
 
 @WebServlet("/loginServlet")
 public class UserServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)  {
 
         HasherService hasherService = HasherService.getInstance();
         UserService userService = UserService.getInstance();
