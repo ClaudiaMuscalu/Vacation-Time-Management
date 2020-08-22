@@ -1,7 +1,10 @@
 package com.timemanagement.servlet;
 
 import com.timemanagement.model.Request;
+import com.timemanagement.model.User;
 import com.timemanagement.repository.RequestRepository;
+import com.timemanagement.service.UserService;
+import com.timemanagement.service.ValidationRequestService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,40 +20,50 @@ import java.text.SimpleDateFormat;
 public class LeaveServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        UserService userService = UserService.getInstance();
         RequestRepository requestRepository = new RequestRepository();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        ValidationRequestService validatorRequests = new ValidationRequestService();
 
         int userId = Integer.parseInt(request.getParameter("userid"));
         int departmentId = Integer.parseInt(request.getParameter("departmentid"));
         int leaveType = Integer.parseInt(request.getParameter("leavetype"));
+        String startDateString = request.getParameter("startdate");
+        String endDateString = request.getParameter("enddate");
         String statusLeave = request.getParameter("status");
         java.util.Date startDate = null;
         java.util.Date endDate = null;
         try {
 
-             startDate = dateFormat.parse(request.getParameter("startdate"));
+             startDate = dateFormat.parse(startDateString);
 
         } catch (ParseException e) {
             e.printStackTrace();
         }
         try {
-             endDate = dateFormat.parse(request.getParameter("enddate"));
+             endDate = dateFormat.parse(endDateString);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
 
         java.sql.Date sqlStartDate = new java.sql.Date(startDate.getTime());
         java.sql.Date sqlEndDate = new java.sql.Date(endDate.getTime());
 
         Request newRequest = new Request(userId, departmentId, leaveType, statusLeave, sqlStartDate, sqlEndDate);
-        System.out.println(newRequest.getUserId());
+
+        int daysBetween = (int) validatorRequests.daysBetweenTwoDates(startDateString, endDateString);
+        newRequest.setPeriod(daysBetween);
+
+        User user = userService.get(userId);
+
+        userService.update(user);
 
         requestRepository.add(newRequest);
 
         HttpSession session = request.getSession();
         session.setAttribute("user", userId);
         response.sendRedirect("mainPage.jsp");
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { }

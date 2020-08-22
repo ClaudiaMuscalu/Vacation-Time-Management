@@ -10,7 +10,7 @@
         <link rel="stylesheet" type="text/css" href="css/mystyle.css">
     </head>
 
-    <body style="background-image: url('images/background.jpg');">
+    <body style="background-image: url('images/17545.jpg');">
         <header>
             <nav class="navbar navbar-expand-lg navbar-light bg-nav">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -27,18 +27,19 @@
             <div class="row">
                 <div class="col-sm-3">
                     <div class="alert alert-success" role="alert">
-                        <h4 class="alert-heading">Manager Access</h4>
+                        <%
+                            UserService userService = UserService.getInstance();
+
+                            HttpSession requestSession = request.getSession();
+                            String userEmail = String.valueOf(requestSession.getAttribute("email"));
+
+                            User user = userService.get(userEmail);
+
+                            int role = user.getRoleId();
+                            if(role == 2){%><h4 class="alert-heading">Manager Access</h4><%}%>
+                        <% if(role == 3){%><h4 class="alert-heading">Admin Access</h4><%}%>
                         <hr>
-                        <p>Welcome,<span>
-                                            <%
-                                                UserService userService = UserService.getInstance();
-
-                                                HttpSession requestSession = request.getSession();
-                                                String userEmail = String.valueOf(requestSession.getAttribute("email"));
-
-                                                User user = userService.get(userEmail);
-                                            %>
-                                            <%=user.getFirstName()%></span>!</p>
+                        <p>Welcome,<span><%=user.getFirstName()%></span>!</p>
                     </div>
 
                     <div class="vertical-menu">

@@ -29,11 +29,15 @@ public class UserServlet extends HttpServlet {
             {
                 HttpSession session = request.getSession();
                 session.setAttribute("email", email);
-                if(user.getRoleId() == 2)
-                    response.sendRedirect("adminPage.jsp");
+                if(user.getRoleId() == 1)
+                    response.sendRedirect("employeePage.jsp");
                 else
-                response.sendRedirect("requestLeave.jsp");
+                response.sendRedirect("adminPage.jsp");
 
+            }
+            else
+            {
+                response.sendRedirect("loginPage.jsp");
             }
         }
         catch(Exception e){

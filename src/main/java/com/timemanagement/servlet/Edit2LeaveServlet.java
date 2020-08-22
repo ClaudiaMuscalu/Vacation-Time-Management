@@ -39,10 +39,8 @@ public class Edit2LeaveServlet extends HttpServlet {
         out.println("<div class='col-9'>");
         out.println("</br>");
         out.println("</br>");
-        out.println("<h1 style='margin-left: 41.5%'>Update status leave</h1>");
-        out.println("</br>");
-        out.println("</br>");
         out.print("<form action='EditLeaveServlet' method='post' style='margin-left: 25%'>");
+        out.println("<h1 style='text-align:center;'>Update status leave</h1>");
         out.print("<input type='hidden' name='id' value='"+r.getId()+"'/>");
         out.print("<input type='hidden' name='userid' value='"+r.getUserId()+"'/>");
         out.print("<input type='hidden' name='depid' value='"+r.getDepartmentId()+"'/>");

@@ -1,8 +1,10 @@
 package com.timemanagement.model;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
-public class Request {
+public class Request{
 
     private int id;
     private int userId;
@@ -11,6 +13,7 @@ public class Request {
     private String status;
     private Date startDate;
     private Date endDate;
+    private int period;
 
     public Request() { }
 
@@ -21,6 +24,7 @@ public class Request {
         this.status = statusLeave;
         this.startDate = startDate;
         this.endDate = endDate;
+
     }
     public Request(int id, int userId, int departmentId, int leaveType, String status,
                    Date startDate, Date endDate) {
@@ -88,5 +92,24 @@ public class Request {
 
     public void setLeaveType(int leaveType) {
         this.leaveType = leaveType;
+    }
+
+    public int getPeriod() {
+        return period;
+    }
+
+    public void setPeriod(int period) {
+        this.period = period;
+    }
+
+
+    private long daysBetweenTwoDates (String date1, String date2){
+
+        LocalDate dateBefore = LocalDate.parse(date1);
+        LocalDate dateAfter = LocalDate.parse(date2);
+
+        long noOfDaysBetween = ChronoUnit.DAYS.between(dateBefore, dateAfter);
+
+        return noOfDaysBetween;
     }
 }

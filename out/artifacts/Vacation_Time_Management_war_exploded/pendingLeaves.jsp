@@ -31,19 +31,21 @@
             <div class="row">
                 <div class="col-sm-3">
                     <div class="alert alert-success" role="alert">
-                        <h4 class="alert-heading">Manager Access</h4>
+                        <%
+                            UserService userService = UserService.getInstance();
+
+                            HttpSession requestSession = request.getSession();
+                            String userEmail = String.valueOf(requestSession.getAttribute("email"));
+
+                            User currentUser = userService.get(userEmail);
+
+                            int role = currentUser.getRoleId();
+                            if(role == 2){%><h4 class="alert-heading">Manager Access</h4><%}%>
+                        <% if(role == 3){%><h4 class="alert-heading">Admin Access</h4><%}%>
                         <hr>
-                        <p>Welcome,<span>
-                                            <%
-                                                UserService userService = UserService.getInstance();
-
-                                                HttpSession requestSession = request.getSession();
-                                                String userEmail = String.valueOf(requestSession.getAttribute("email"));
-
-                                                User user = userService.get(userEmail);
-                                            %>
-                                            <%=user.getFirstName()%></span>!</p>
+                        <p>Welcome,<span><%=currentUser.getFirstName()%></span>!</p>
                     </div>
+
 
                     <div class="vertical-menu">
                         <div class="dropdown">
@@ -108,12 +110,14 @@
                             ArrayList<Request> requests = requestRepository.getAll();
                             for(Request r : requests)
                             {
-                                if(r.getStatus().equals("pending approval"))
+                                User user1 = userService.get(r.getUserId());
+                                if(r.getStatus().equals("pending approval") && ((role == 2 && user1.getDepartment().getId() == currentUser.getDepartment().getId()) && user1.getRoleId() == 1)
+                                        || (role == 3 && user1.getRoleId() == 2))
                                 {
                         %>
                         <tbody>
                         <tr>
-                            <td><%=userService.get(r.getUserId()).getLastName() + " " + userService.get(r.getUserId()).getFirstName()%></td>
+                            <td><%=user1.getLastName() + " " + user1.getFirstName()%></td>
                             <td><%=departmentService.get(r.getDepartmentId()).getName()%></td>
                             <td><%=leaveTypeService.get(r.getLeaveType()).getTitle()%></td>
                             <td><%=r.getStartDate()%></td>

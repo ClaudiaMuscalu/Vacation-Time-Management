@@ -16,84 +16,123 @@
 <html>
     <head>
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="css/mystyle.css">
     </head>
 
-    <body style="background-image: url('images/background.jpg');">
-        <nav class="navbar navbar-expand-lg navbar-light bg-nav">
-            <a class="navbar-brand" href="#"></a>
 
+    <body style="background-image: url('images/background.jpg');">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-nav">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="index.jsp">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="requestLeave.jsp">Form Leave</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="historyRequests.jsp">History</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="register.jsp">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="loginPage.jsp">Login</a>
-                    </li>
                 </ul>
             </div>
         </nav>
+    </header>
 
-        <br>
-        <h5 style="text-align: center"><%=user.getFirstName()%> <%=user.getLastName()%>'s Leave Request</h5>
+    <div>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">Employee Access</h4>
+                    <hr>
+                    <p>Welcome, <span> <%=user.getFirstName()%></span>!</p>
+                </div>
 
-        <form method="post" action="LeaveServlet" class="form">
-            <div class="form-group">
-                <label>User id</label>
-                <input type="text" class="form-control" name="userid" value=<%=user.getId()%>>
+                <div class="vertical-menu">
+                    <a href="employeePage.jsp">My Profile</a>
+                    <div class="dropdown">
+                        <button href="#"  class="dropdown-btn">Leaves <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-container">
+                            <a href="requestLeave.jsp">Leave Request</a>
+                            <a href="historyRequests.jsp">Leave History</a>
+                        </div>
+                    </div>
+                    <a href="leaveDepartment.jsp">Leaves in my department</a>
+                </div>
+                <br>
             </div>
 
-            <div class="form-group">
-                <label>Department id</label>
-                <input class="form-control" name="departmentid" value=<%=user.getDepartment().getId()%>>
+                <div class="col-sm-9 container-center">
+                    <form method="post" action="LeaveServlet">
+                        <h3 style="text-align: center"><%=user.getFirstName()%> <%=user.getLastName()%>'s Leave Request</h3>
+
+
+                        <div class="alert alert-info" role="alert">
+                            This is a info alert about your leave status
+                            <ul>
+                                <li>Days left: <span><%=user.getDaysLeft()%></span> </li>
+                                <li>Periods left: <span><%=user.getPeriodsLeft()%></span> </li>
+                            </ul>
+                            </br>
+                        </div>
+
+                        <input id="daysLeft" value=<%=user.getDaysLeft()%> style="display: none;">
+                        <input id="periodsLeft" value=<%=user.getPeriodsLeft()%> style="display: none;">
+
+                        <div class="form-group" style="display: none;">
+                            <label>User id</label>
+                            <input type="text" class="form-control" name="userid" value=<%=user.getId()%>>
+                        </div>
+
+                        <div class="form-group" style="display: none;">
+                            <label>Department id</label>
+                            <input class="form-control" name="departmentid" value=<%=user.getDepartment().getId()%>>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Leave Type</label>
+                            <select name="leavetype" class="form-control" id="exampleFormControlSelect1" required>
+                                <%
+
+                                    LeaveTypeService leaveTypeService = LeaveTypeService.getInstance();
+                                    ArrayList<LeaveType> leaveTypes = leaveTypeService.getAll();
+
+                                    for(LeaveType l: leaveTypes)
+                                    {
+                                %>
+
+                                <option value=<%=l.getId()%> > <%=l.getTitle()%> </option>
+                                <%
+                                    }
+                                %>
+                            </select>
+                        </div>
+
+                        <div class="form-group" style="display: none;" >
+                            <label>Status leave request</label>
+                            <input class="form-control" name="status" value="pending approval" >
+                        </div>
+
+                        <div class="form-group">
+                            <label>Start Date</label>
+                            <input class="form-control" type="date" name="startdate" id="start" required>
+                        </div>
+                        <span id="wrongStart" style="color: darkred;display: none;" >The start date cannot be in the past!</span>
+
+                        <div class="form-group">
+                            <label>End Date</label>
+                            <input class="form-control" type="date" name="enddate" id="end" required>
+                        </div>
+                        <span id="wrongEnd" style="color: darkred; display: none;">The end date cannot be in the past!</span>
+                        <br>
+                        <span id="wrongPeriod" style="color: darkred; display: none;">The end date cannot be smaller than start date!</span>
+                        <br>
+                        <span id="wrongData" style="color: darkred; display: none;">Please enter valid data!</span>
+                        <br>
+                        <span id="notDaysLeft" style="color: darkred; display: none;">You don't have so many days off left!Check how many days you have left at the top of the page.</span>
+                        <span id="notPeriodsLeft" style="color: darkred; display: none;">"You have just one period left!You have to take all the remaining days!</span>
+                        <button type="submit"  class="btn btn-lg btn-primary" id="btn-submit">Process</button>
+                    </form>
+                    <br>
+                </div>
             </div>
-
-            <div class="form-group">
-                <label>Leave Type</label>
-                <select name="leavetype" class="form-control" id="exampleFormControlSelect1">
-                    <%
-
-                        LeaveTypeService leaveTypeService = LeaveTypeService.getInstance();
-                        ArrayList<LeaveType> leaveTypes = leaveTypeService.getAll();
-
-                        for(LeaveType l: leaveTypes)
-                        {
-                    %>
-
-                    <option value=<%=l.getId()%> > <%=l.getTitle()%> </option>
-                    <%
-                        }
-                    %>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Status leave request</label>
-                <input class="form-control" name="status" value="pending approval" >
-            </div>
-
-            <div class="form-group">
-                <label>Start Date</label>
-                <input class="form-control" type="date" name="startdate">
-            </div>
-
-            <div class="form-group">
-                <label>End Date</label>
-                <input class="form-control" type="date" name="enddate">
-            </div>
-
-            <button type="submit"  class="btn btn-lg btn-primary">Submit</button>
-        </form>
-        <br>
+        </div>
     </body>
+    <script src="scripts/RequestLeaveModule.js"></script>
 </html>

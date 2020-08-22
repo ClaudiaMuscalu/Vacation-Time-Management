@@ -1,11 +1,8 @@
 package com.timemanagement.servlet;
 
 import com.timemanagement.model.Department;
-import com.timemanagement.model.Request;
 import com.timemanagement.model.User;
 import com.timemanagement.service.DepartmentService;
-import com.timemanagement.service.LeaveTypeService;
-import com.timemanagement.service.RequestService;
 import com.timemanagement.service.UserService;
 
 import javax.servlet.ServletException;
@@ -42,7 +39,6 @@ public class Edit2EmployeeServlet extends HttpServlet {
         out.println("</br>");
         out.println("</br>");
         out.println("<h1 style='margin-left: 41.5%'>Update employee</h1>");
-        out.println("</br>");
         out.println("</br>");
         out.print("<form action='EditEmployeeServlet' method='post' style='margin-left: 25%'>");
         out.print("<input type='hidden' name='id' value='"+u.getId()+"'/>");

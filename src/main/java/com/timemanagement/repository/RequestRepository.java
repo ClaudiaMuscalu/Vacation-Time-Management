@@ -107,7 +107,7 @@ public class RequestRepository implements IRepository {
 
         Request request = (Request) item;
         String insertSQL = "INSERT INTO requests (user_id, department_id, leave_type_code, status, " +
-                "start_date, end_date) VALUES(?,?,?,?,?,?)";
+                "start_date, end_date, period) VALUES(?,?,?,?,?,?,?)";
 
         Connection connection = null;
         PreparedStatement statement = null;
@@ -123,6 +123,7 @@ public class RequestRepository implements IRepository {
             statement.setString(4, request.getStatus());
             statement.setDate(5, (Date) request.getStartDate());
             statement.setDate(6, (Date) request.getEndDate());
+            statement.setInt(7, request.getPeriod());
 
             statement.executeUpdate();
 

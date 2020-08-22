@@ -11,6 +11,23 @@ public class User {
     private String jobName;
     private String email;
     private String password;
+    private int daysLeft;
+    private int periodsLeft;
+
+    public User(int id, int managerId, int roleId, Department department, String firstName, String lastName,
+                String jobName, String email, String password, int daysLeft, int periodsLeft) {
+        this.id = id;
+        this.managerId = managerId;
+        this.roleId = roleId;
+        this.department = department;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.jobName = jobName;
+        this.email = email;
+        this.password = password;
+        this.daysLeft = daysLeft;
+        this.periodsLeft = periodsLeft;
+    }
 
     public User(){}
 
@@ -107,5 +124,21 @@ public class User {
 
     public void setRoleId(int roleId) {
         this.roleId = roleId;
+    }
+
+    public int getDaysLeft() {
+        return daysLeft;
+    }
+
+    public void setDaysLeft(int daysLeft) {
+        this.daysLeft = daysLeft;
+    }
+
+    public int getPeriodsLeft() {
+        return periodsLeft;
+    }
+
+    public void setPeriodsLeft(int periodsLeft) {
+        this.periodsLeft = periodsLeft;
     }
 }

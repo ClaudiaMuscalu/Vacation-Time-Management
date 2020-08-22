@@ -92,7 +92,9 @@ public class UserRepository implements IRepository {
                         resultset.getString("last_name"),
                         resultset.getString("job_name"),
                         resultset.getString("email"),
-                        resultset.getString("password"));
+                        resultset.getString("password"),
+                        resultset.getInt("days_left"),
+                        resultset.getInt("periods_left"));
             }
 
         } catch (ClassNotFoundException | SQLException e) {
@@ -239,7 +241,7 @@ public class UserRepository implements IRepository {
     public boolean update(User user)
     {
         String updateSQL = "UPDATE users SET department_id = ?, user_type_code = ?," +
-                " first_name = ?, last_name = ?, job_name = ?, manager_id = ? WHERE user_id = ?";
+                " first_name = ?, last_name = ?, job_name = ?, manager_id = ?, days_left = ?, periods_left = ? WHERE user_id = ?";
 
         Connection connection = null;
         PreparedStatement statement = null;
@@ -256,7 +258,9 @@ public class UserRepository implements IRepository {
             statement.setString(4, user.getLastName());
             statement.setString(5, user.getJobName());
             statement.setInt(6, user.getDepartment().getManagerId());
-            statement.setInt(7, user.getId());
+            statement.setInt(7, user.getDaysLeft());
+            statement.setInt(8, user.getPeriodsLeft());
+            statement.setInt(9, user.getId());
 
             statement.executeUpdate();
 
