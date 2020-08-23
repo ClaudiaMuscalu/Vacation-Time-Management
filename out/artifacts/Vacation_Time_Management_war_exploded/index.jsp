@@ -4,8 +4,7 @@
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <link rel="stylesheet" type="text/css" href="css/mystyle.css">
     </head>
-
-    <body style="background-image: url('images/background.jpg');">
+    <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-nav">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
@@ -22,8 +21,7 @@
             </div>
         </nav>
     <br> <br> <br>
-        <img src="images/calendar.png" alt="planer" class="logo">
-        <br>
-        <h1 style="text-align: center">Leave Management</h1>
+        <img src="images/calendar.png" alt="planer" class="logo"><br>
+        <h1>Leave Management</h1>
     </body>
 </html>

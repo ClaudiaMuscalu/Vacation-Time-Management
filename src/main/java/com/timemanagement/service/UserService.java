@@ -40,4 +40,8 @@ public class UserService {
     public boolean update(User user){
         return userRepository.update(user);
     }
+
+    public int getNumberOfEmployeeForADepartment(int idDepartment) {
+        return userRepository.getNumberOfEmployeeForADepartment(idDepartment);
+    }
 }

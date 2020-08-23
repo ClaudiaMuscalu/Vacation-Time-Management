@@ -102,6 +102,97 @@ public class RequestRepository implements IRepository {
         return requests;
     }
 
+    public ArrayList<Request> getAllRequestForAnEmployee(int idEmployee)
+    {
+        ArrayList<Request>  requests= new ArrayList<>();
+        String query = "SELECT * FROM requests WHERE user_id = ?";
+
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(Url, User, Password);
+            statement = connection.prepareStatement(query);
+
+            statement.setInt(1, idEmployee);
+            ResultSet resultset = statement.executeQuery();
+
+            while (resultset.next()) {
+                Request request;
+                request = new Request(
+                        resultset.getInt("request_id"),
+                        resultset.getInt("user_id"),
+                        resultset.getInt("department_id"),
+                        resultset.getInt("leave_type_code"),
+                        resultset.getString("status"),
+                        resultset.getDate("start_date"),
+                        resultset.getDate("end_date"));
+                requests.add(request);
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (connection != null)
+                    connection.close();
+
+                if (statement != null)
+                    statement.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+        return requests;
+    }
+    public ArrayList<Request> getAllApprovedLeaveRequestsForADepartment(int idDepartment)
+    {
+        ArrayList<Request>  requests= new ArrayList<>();
+        String query = "SELECT * FROM requests WHERE status = ? AND department_id = ?";
+
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(Url, User, Password);
+            statement = connection.prepareStatement(query);
+
+            statement.setString(1, "approved");
+            statement.setInt(2, idDepartment);
+
+            ResultSet resultset = statement.executeQuery();
+
+            while (resultset.next()) {
+                Request request;
+                request = new Request(
+                        resultset.getInt("request_id"),
+                        resultset.getInt("user_id"),
+                        resultset.getInt("department_id"),
+                        resultset.getInt("leave_type_code"),
+                        resultset.getString("status"),
+                        resultset.getDate("start_date"),
+                        resultset.getDate("end_date"));
+                requests.add(request);
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (connection != null)
+                    connection.close();
+
+                if (statement != null)
+                    statement.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+        return requests;
+    }
+
     @Override
     public void add(Object item) {
 

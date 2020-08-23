@@ -27,37 +27,37 @@
             </nav>
 
             <form method="post" action="RegisterServlet" class="form" style="margin-top: 15%;">
-                <h3 style="text-align: center">Register</h3>
+                <h3>Register</h3>
                 <br>
                 <div class="form-group">
                     <label>First Name</label>
-                    <input type="text" class="form-control" name="firstname"/>
+                    <input type="text" class="form-control" name="firstname" required/>
                 </div>
 
                 <div class="form-group">
                     <label>Last Name</label>
-                    <input type="text" class="form-control" name="lastname"/>
+                    <input type="text" class="form-control" name="lastname" required/>
                 </div>
 
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" class="form-control" name="email" />
+                    <input type="email" class="form-control" name="email" required/>
                 </div>
 
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" class="form-control" name="password"/>
+                    <input type="password" class="form-control" name="password" required/>
                 </div>
 
                 <div class="form-group">
                     <div class="maxl">
                         <br>
                         <label class="radio inline">Role
-                            <input type="radio" name="usertype" value="2">
+                            <input type="radio" name="usertype" value="2" required>
                             <span> Manager </span>
                         </label>
                         <label class="radio inline">
-                            <input type="radio" name="usertype" value="1">
+                            <input type="radio" name="usertype" value="1" required>
                             <span> Worker </span>
                         </label>
                     </div>
@@ -65,12 +65,13 @@
 
                 <div class="form-group">
                     <label>Job Name</label>
-                    <input class="form-control" name="jobName" />
+                    <input class="form-control" type="text" name="jobName" required/>
                 </div>
 
                 <div class="form-group">
                     <label>Department</label>
-                    <select name="department" class="form-control" id="exampleFormControlSelect1">
+                    <select name="department" class="form-control" id="exampleFormControlSelect1" required>
+                        <option></option>
                         <%
                             DepartmentService departmentService = DepartmentService.getInstance();
 

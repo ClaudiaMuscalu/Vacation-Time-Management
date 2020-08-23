@@ -20,14 +20,16 @@
         <link rel="stylesheet" type="text/css" href="css/mystyle.css">
     </head>
 
-
-    <body style="background-image: url('images/background.jpg');">
+    <body style="background: url('images/background.jpg');">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-nav">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="index.jsp">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="loginPage.jsp">Log out</a>
                     </li>
                 </ul>
             </div>
@@ -38,7 +40,8 @@
         <div class="row">
             <div class="col-sm-3">
                 <div class="alert alert-success" role="alert">
-                    <h4 class="alert-heading">Employee Access</h4>
+                    <p style="font-weight: bold;">Department<span> <%=user.getDepartment().getName()%></span></p>
+                    <h4 class="alert-heading"><i class="fa fa-user" aria-hidden="true"></i>Employee Access</h4>
                     <hr>
                     <p>Welcome, <span> <%=user.getFirstName()%></span>!</p>
                 </div>
@@ -61,8 +64,7 @@
                 <div class="col-sm-9 container-center">
                     <form method="post" action="LeaveServlet">
                         <h3 style="text-align: center"><%=user.getFirstName()%> <%=user.getLastName()%>'s Leave Request</h3>
-
-
+                        <br/>
                         <div class="alert alert-info" role="alert">
                             This is a info alert about your leave status
                             <ul>
@@ -110,13 +112,13 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Start Date</label>
+                            <label>From Date</label>
                             <input class="form-control" type="date" name="startdate" id="start" required>
                         </div>
                         <span id="wrongStart" style="color: darkred;display: none;" >The start date cannot be in the past!</span>
 
                         <div class="form-group">
-                            <label>End Date</label>
+                            <label>To Date</label>
                             <input class="form-control" type="date" name="enddate" id="end" required>
                         </div>
                         <span id="wrongEnd" style="color: darkred; display: none;">The end date cannot be in the past!</span>
@@ -135,4 +137,5 @@
         </div>
     </body>
     <script src="scripts/RequestLeaveModule.js"></script>
+    <script src="scripts/script.js"></script>
 </html>

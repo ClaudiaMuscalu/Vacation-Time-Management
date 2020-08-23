@@ -129,14 +129,15 @@ public class UserRepository implements IRepository {
             connection = DriverManager.getConnection(Url, User, Password);
             statement = connection.prepareStatement(insertSQL);
 
-            statement.setInt(1, user.getDepartment().getId());
+            Department dep = user.getDepartment();
+            statement.setInt(1, dep.getId());
             statement.setInt(2, user.getRoleId());
             statement.setString(3, user.getFirstName());
             statement.setString(4, user.getLastName());
             statement.setString(5, user.getEmail());
             statement.setString(6, user.getPassword());
             statement.setString(7, user.getJobName());
-            statement.setInt(8, 1);
+            statement.setInt(8, dep.getManagerId());
 
             statement.executeUpdate();
 
@@ -189,6 +190,45 @@ public class UserRepository implements IRepository {
         }
     }
 
+    public int getNumberOfEmployeeForADepartment(int idDepartment)
+    {
+        ArrayList<User> users = new ArrayList<>();
+        String query = "SELECT COUNT(*) AS total FROM users WHERE department_id = ?";
+        int noEmployeeForADepartment = 0;
+
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        DepartmentRepository departmentRepository = new DepartmentRepository();
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(Url, User, Password);
+            statement = connection.prepareStatement(query);
+
+            statement.setInt(1, idDepartment);
+
+            ResultSet resultset = statement.executeQuery();
+
+            while (resultset.next()) {
+                noEmployeeForADepartment = resultset.getInt("total");
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (connection != null)
+                    connection.close();
+
+                if (statement != null)
+                    statement.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+        return noEmployeeForADepartment;
+    }
 
     public ArrayList<User> getAll()
     {

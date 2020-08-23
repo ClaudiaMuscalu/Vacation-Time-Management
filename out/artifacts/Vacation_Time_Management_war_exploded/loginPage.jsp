@@ -23,19 +23,19 @@
         </nav>
 
         <form method="post" action="loginServlet" class="form">
-            <h3 style="text-align: center">Authentication</h3>
+            <h3>Authentication</h3>
             <br>
             <div class="form-group">
                 <label for="exampleInputEmail1">Email</label>
-                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
             </div>
 
             <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                <input type="password" class="form-control" id="exampleInputPassword1" name="password" required>
             </div>
 
-            <button type="submit" class="btn btn-lg btn-primary">log in</button>
+            <button type="submit" class="btn btn-lg btn-primary">Log in</button>
         </form>
     </body>
 </html>

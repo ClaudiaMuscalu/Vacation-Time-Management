@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sound.midi.SysexMessage;
 import java.io.IOException;
 
 @WebServlet("/RegisterServlet")
@@ -27,7 +28,8 @@ public class RegisterServlet extends HttpServlet {
         String email = request.getParameter("email");
         int departmentId = Integer.parseInt(request.getParameter("department"));
         int userType = Integer.parseInt(request.getParameter("usertype"));
-        String jobName = request.getParameter("jobname");
+        String jobName = request.getParameter("jobName");
+
 
         String password = hasherService.hash(request.getParameter("password"));
 

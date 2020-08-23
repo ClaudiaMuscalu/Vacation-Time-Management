@@ -38,9 +38,9 @@ public class Edit2EmployeeServlet extends HttpServlet {
         out.println("<div class='col-9'>");
         out.println("</br>");
         out.println("</br>");
-        out.println("<h1 style='margin-left: 41.5%'>Update employee</h1>");
-        out.println("</br>");
         out.print("<form action='EditEmployeeServlet' method='post' style='margin-left: 25%'>");
+        out.println("<h1 style='text-align: center;'>Update employee</h1>");
+        out.println("</br>");
         out.print("<input type='hidden' name='id' value='"+u.getId()+"'/>");
         out.print("<div class='form-group'><label>Last Name:</label><input class='form-control' type='text' name='lastname' value='"+u.getLastName()+"'/></div>");
         out.print("<div class='form-group'><label>First Name:</label><input class='form-control' type='text' name='firstname' value='"+u.getFirstName()+"'/></div>");

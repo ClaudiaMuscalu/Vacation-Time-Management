@@ -2,13 +2,13 @@
 <%@include file="LayoutAdmin.jsp" %>
 <div class="col-sm-9 container-center">
                     </br> </br>
-                    <h2 style="margin-left: 14em;">Successfully action</h2>
+                    <h2 style="text-align: center">Successfully action</h2>
                     </br>
-                    <img src="images/4639.jpg" style="width: 200px; height: 200px; margin-left: 23em;">
+                    <img class="logo" src="images/4639.jpg">
                 </div>
             </div>
         </div>
-<body style="background-image: url('images/background.jpg');">
+<body>
     <script src="scripts/script.js"></script>
 </body>
 </html>

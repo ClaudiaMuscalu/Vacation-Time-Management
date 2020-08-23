@@ -35,4 +35,9 @@ public class RequestService {
     public void add(Request request){
         requestRepository.add(request);
     }
+
+    public ArrayList<Request> getAllApprovedLeaveRequestsForADepartment(int idDepartment)
+    {
+        return requestRepository.getAllApprovedLeaveRequestsForADepartment(idDepartment);
+    }
 }
