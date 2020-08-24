@@ -5,6 +5,7 @@ var errorEndDate = document.getElementById("wrongEnd");
 var errorPeriod = document.getElementById("wrongPeriod");
 var btnRequest = document.getElementById("btn-submit");
 var errorData = document.getElementById("wrongData");
+var errorMinimumPeriod = document.getElementById("minPeriodLeave");
 
 var ok1 = 1;
 var ok2 = 1;
@@ -55,12 +56,42 @@ endDateInput.addEventListener("focusout", function() {
 });
 
 btnRequest.addEventListener("click", function () {
+    debugger;
 
     let endDate = new Date(endDateInput.value);
     let startDate = new Date(startDateInput.value);
     let Difference_In_Time = endDate.getTime() - startDate.getTime();
 
-    let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+    let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24) + 1;
+    console.log(Difference_In_Days);
+
+    var ok6 = 1;
+    if(Difference_In_Days < 5)
+    {
+        errorMinimumPeriod.style.display = "";
+        ok6 = 0;
+    }
+    else
+    {
+        errorMinimumPeriod.style.display = "none";
+        ok6 = 1;
+    }
+
+    // const date1 = new Date('1/06/2020');
+    // const date2 = new Date('31/08/2020');
+    //
+    // let Difference_In_Time1 = date1.getTime() - startDate.getTime();
+    //
+    // var daysBetwwenStartDateAndDate1 = Difference_In_Time1 / (1000 * 3600 * 24);
+    //
+    // var calculatePeriod = Difference_In_Days;
+    //
+    // if(daysBetwwenStartDateAndDate1 > 0)
+    // {
+    //     if(endDate >= date1 && endDate <= date2)
+    //     calculatePeriod = calculatePeriod - daysBetwwenStartDateAndDate1;
+    // }
+
 
     var inputDaysLeft = document.getElementById("daysLeft");
     var inputPeriodsLeft = document.getElementById("periodsLeft");
@@ -98,7 +129,7 @@ btnRequest.addEventListener("click", function () {
         }
     }
 
-    if(ok1 + ok2 + ok3 + ok4  + ok5 != 5){
+    if(ok1 + ok2 + ok3 + ok4  + ok5 + ok6 != 6){
         btnRequest.type = "button";
         errorData.style.display = "";
 

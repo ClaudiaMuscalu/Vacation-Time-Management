@@ -74,8 +74,10 @@
                             </br>
                         </div>
 
-                        <input id="daysLeft" value=<%=user.getDaysLeft()%> style="display: none;">
-                        <input id="periodsLeft" value=<%=user.getPeriodsLeft()%> style="display: none;">
+                        <div style="display: none;">
+                        <input id="daysLeft" value=<%=user.getDaysLeft()%> >
+                        <input id="periodsLeft" value=<%=user.getPeriodsLeft()%>>
+                        </div>
 
                         <div class="form-group" style="display: none;">
                             <label>User id</label>
@@ -129,6 +131,7 @@
                         <br>
                         <span id="notDaysLeft" style="color: darkred; display: none;">You don't have so many days off left!Check how many days you have left at the top of the page.</span>
                         <span id="notPeriodsLeft" style="color: darkred; display: none;">"You have just one period left!You have to take all the remaining days!</span>
+                        <span id="minPeriodLeave" style="color: darkred; display: none;">A period of leave may not be less than 5 days!</span>
                         <button type="submit"  class="btn btn-lg btn-primary" id="btn-submit">Process</button>
                     </form>
                     <br>

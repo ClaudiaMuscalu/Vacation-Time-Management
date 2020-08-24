@@ -43,7 +43,9 @@ public class UserRepository implements IRepository {
                             resultset.getString("last_name"),
                             resultset.getString("job_name"),
                             resultset.getString("email"),
-                            resultset.getString("password"));
+                            resultset.getString("password"),
+                            resultset.getInt("days_left"),
+                            resultset.getInt("periods_left"));
             }
 
         } catch (ClassNotFoundException | SQLException e) {

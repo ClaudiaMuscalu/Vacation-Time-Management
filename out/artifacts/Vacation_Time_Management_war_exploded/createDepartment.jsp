@@ -103,7 +103,7 @@
 
                         <div class="form-group">
                             <label>Manager:</label>
-                        <select name="managerid" class="form-control" id="exampleFormControlSelect1" required>
+                        <select name="managerid" class="form-control" id="exampleFormControlSelect1" >
                             <option></option>
                             <%
                                 ArrayList<User> users = userService.getAll();

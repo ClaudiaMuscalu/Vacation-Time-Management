@@ -51,10 +51,12 @@ public class LeaveServlet extends HttpServlet {
 
         Request newRequest = new Request(userId, departmentId, leaveType, statusLeave, sqlStartDate, sqlEndDate);
 
-        int daysBetween = (int) validatorRequests.daysBetweenTwoDates(startDateString, endDateString);
+        int daysBetween = (int) validatorRequests.daysBetweenTwoDates(startDateString, endDateString) + 1;
         newRequest.setPeriod(daysBetween);
 
         User user = userService.get(userId);
+        user.setDaysLeft(user.getDaysLeft()- daysBetween);
+        user.setPeriodsLeft(user.getPeriodsLeft() - 1);
 
         userService.update(user);
 
