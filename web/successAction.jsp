@@ -4,7 +4,7 @@
                     </br> </br>
                     <h2 style="text-align: center">Successfully action</h2>
                     </br>
-                    <img class="logo" src="images/4639.jpg">
+                    <img class="logo" src="images/4639.jpg" style="margin-top: 5%">
                 </div>
             </div>
         </div>

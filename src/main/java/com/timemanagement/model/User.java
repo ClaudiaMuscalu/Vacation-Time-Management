@@ -13,9 +13,10 @@ public class User {
     private String password;
     private int daysLeft;
     private int periodsLeft;
+    private int holiday1June31August;
 
     public User(int id, int managerId, int roleId, Department department, String firstName, String lastName,
-                String jobName, String email, String password, int daysLeft, int periodsLeft) {
+                String jobName, String email, String password, int daysLeft, int periodsLeft, int holiday) {
         this.id = id;
         this.managerId = managerId;
         this.roleId = roleId;
@@ -27,6 +28,7 @@ public class User {
         this.password = password;
         this.daysLeft = daysLeft;
         this.periodsLeft = periodsLeft;
+        this.holiday1June31August = holiday;
     }
 
     public User(){}
@@ -140,5 +142,13 @@ public class User {
 
     public void setPeriodsLeft(int periodsLeft) {
         this.periodsLeft = periodsLeft;
+    }
+
+    public int getHoliday1June31August() {
+        return holiday1June31August;
+    }
+
+    public void setHoliday1June31August(int holiday1June31August) {
+        this.holiday1June31August = holiday1June31August;
     }
 }

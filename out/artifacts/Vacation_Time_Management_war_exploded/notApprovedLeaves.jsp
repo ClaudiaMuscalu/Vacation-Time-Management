@@ -119,8 +119,10 @@
                             for(Request r : requests)
                             {
                                 User user1 = userService.get(r.getUserId());
-                                if(r.getStatus().equals("disapproved") && ((role == 2 && user1.getDepartment().getId() == currentUser.getDepartment().getId()) && user1.getRoleId() == 1)
-                                        || (role == 3 && user1.getRoleId() == 2))
+                                if(r.getStatus().equals("disapproved") &&
+                                        (role - 1 == user1.getRoleId() )
+                                        && ((role == 2 && user1.getDepartment().getId() == currentUser.getDepartment().getId())
+                                        || role == 3))
                                 {
                         %>
                         <tbody>

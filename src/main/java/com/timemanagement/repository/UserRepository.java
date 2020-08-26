@@ -45,7 +45,8 @@ public class UserRepository implements IRepository {
                             resultset.getString("email"),
                             resultset.getString("password"),
                             resultset.getInt("days_left"),
-                            resultset.getInt("periods_left"));
+                            resultset.getInt("periods_left"),
+                            resultset.getInt("holiday1June31August"));
             }
 
         } catch (ClassNotFoundException | SQLException e) {
@@ -96,7 +97,8 @@ public class UserRepository implements IRepository {
                         resultset.getString("email"),
                         resultset.getString("password"),
                         resultset.getInt("days_left"),
-                        resultset.getInt("periods_left"));
+                        resultset.getInt("periods_left"),
+                        resultset.getInt("holiday1June31August"));
             }
 
         } catch (ClassNotFoundException | SQLException e) {
@@ -283,7 +285,8 @@ public class UserRepository implements IRepository {
     public boolean update(User user)
     {
         String updateSQL = "UPDATE users SET department_id = ?, user_type_code = ?," +
-                " first_name = ?, last_name = ?, job_name = ?, manager_id = ?, days_left = ?, periods_left = ? WHERE user_id = ?";
+                " first_name = ?, last_name = ?, job_name = ?, manager_id = ?, days_left = ?, periods_left = ?, " +
+                "holiday1June31August = ? WHERE user_id = ?";
 
         Connection connection = null;
         PreparedStatement statement = null;
@@ -302,7 +305,8 @@ public class UserRepository implements IRepository {
             statement.setInt(6, user.getDepartment().getManagerId());
             statement.setInt(7, user.getDaysLeft());
             statement.setInt(8, user.getPeriodsLeft());
-            statement.setInt(9, user.getId());
+            statement.setInt(9, user.getHoliday1June31August());
+            statement.setInt(10, user.getId());
 
             statement.executeUpdate();
 

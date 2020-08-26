@@ -67,7 +67,6 @@
                             <th scope="row">Leave Type</th>
                             <th scope="row">From Date</th>
                             <th scope="row">To Date</th>
-                            <th scope="row">Period</th>
                             <th scope="row">Status</th>
                         </tr>
                         </thead>
@@ -84,7 +83,6 @@
                             <td><%=leaveTypeService.get(r.getLeaveType()).getTitle()%></td>
                             <td><%=r.getStartDate()%></td>
                             <td><%=r.getEndDate()%></td>
-                            <td><%=r.getPeriod()%></td>
                             <%if(r.getStatus().equals("approved"))
                                 {%>
                             <td style="color: darkgreen; font-weight: bold;"><%=r.getStatus()%></td>

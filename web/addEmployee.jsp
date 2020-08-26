@@ -134,7 +134,7 @@
 
                         <div class="form-group">
                             <label>Job Name</label>
-                            <input class="form-control" name="jobName" required/>
+                            <input class="form-control" name="jobname" required/>
                         </div>
 
                         <div class="form-group">

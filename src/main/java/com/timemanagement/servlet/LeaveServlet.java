@@ -31,6 +31,7 @@ public class LeaveServlet extends HttpServlet {
         String startDateString = request.getParameter("startdate");
         String endDateString = request.getParameter("enddate");
         String statusLeave = request.getParameter("status");
+        String holiday1June31Aug = request.getParameter("holiday");
         java.util.Date startDate = null;
         java.util.Date endDate = null;
         try {
@@ -57,6 +58,7 @@ public class LeaveServlet extends HttpServlet {
         User user = userService.get(userId);
         user.setDaysLeft(user.getDaysLeft()- daysBetween);
         user.setPeriodsLeft(user.getPeriodsLeft() - 1);
+        user.setHoliday1June31August(Integer.parseInt(holiday1June31Aug));
 
         userService.update(user);
 

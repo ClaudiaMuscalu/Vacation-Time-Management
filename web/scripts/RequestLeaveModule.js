@@ -1,3 +1,20 @@
+dropdownFunction = function ()  {
+    const dropdown = document.getElementsByClassName("dropdown-btn");
+
+    for (let i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+        });
+    }
+}
+dropdownFunction();
+
 var startDateInput = document.getElementById("start");
 var endDateInput = document.getElementById("end");
 var errorStartDate = document.getElementById("wrongStart");
@@ -6,13 +23,16 @@ var errorPeriod = document.getElementById("wrongPeriod");
 var btnRequest = document.getElementById("btn-submit");
 var errorData = document.getElementById("wrongData");
 var errorMinimumPeriod = document.getElementById("minPeriodLeave");
+var errorRestrictivePeriod = document.getElementById("restrictivePeriod");
+var inputHoliday1June31August = document.getElementById("holidayBetween1June31Aug");
+var specialPeriod = document.getElementById("specialPeriod");
 
 var ok1 = 1;
 var ok2 = 1;
 var ok3 = 1;
 
 startDateInput.addEventListener("focusout", function() {
-    debugger;
+
     var currentDate = new Date();
     var startDate = new Date(startDateInput.value);
     if(startDate <= currentDate)
@@ -29,7 +49,7 @@ startDateInput.addEventListener("focusout", function() {
 });
 
 endDateInput.addEventListener("focusout", function() {
-    debugger;
+
     var currentDate = new Date();
     var endDate = new Date(endDateInput.value);
     var startDate = new Date(startDateInput.value);
@@ -56,13 +76,13 @@ endDateInput.addEventListener("focusout", function() {
 });
 
 btnRequest.addEventListener("click", function () {
-    debugger;
+    //debugger;
 
     let endDate = new Date(endDateInput.value);
     let startDate = new Date(startDateInput.value);
     let Difference_In_Time = endDate.getTime() - startDate.getTime();
 
-    let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24) + 1;
+    let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
     console.log(Difference_In_Days);
 
     var ok6 = 1;
@@ -71,27 +91,10 @@ btnRequest.addEventListener("click", function () {
         errorMinimumPeriod.style.display = "";
         ok6 = 0;
     }
-    else
-    {
+    else {
         errorMinimumPeriod.style.display = "none";
         ok6 = 1;
     }
-
-    // const date1 = new Date('1/06/2020');
-    // const date2 = new Date('31/08/2020');
-    //
-    // let Difference_In_Time1 = date1.getTime() - startDate.getTime();
-    //
-    // var daysBetwwenStartDateAndDate1 = Difference_In_Time1 / (1000 * 3600 * 24);
-    //
-    // var calculatePeriod = Difference_In_Days;
-    //
-    // if(daysBetwwenStartDateAndDate1 > 0)
-    // {
-    //     if(endDate >= date1 && endDate <= date2)
-    //     calculatePeriod = calculatePeriod - daysBetwwenStartDateAndDate1;
-    // }
-
 
     var inputDaysLeft = document.getElementById("daysLeft");
     var inputPeriodsLeft = document.getElementById("periodsLeft");
@@ -129,7 +132,64 @@ btnRequest.addEventListener("click", function () {
         }
     }
 
-    if(ok1 + ok2 + ok3 + ok4  + ok5 + ok6 != 6){
+    var ok7 = 1;
+
+    const date1 = new Date('06/01/2021');
+    const date2 = new Date('08/31/2021');
+
+    var PeriodBetweenJuneAndAugust = Difference_In_Days;
+
+    var timeBefore1June = date1.getTime() - startDate.getTime();
+    var daysBefore1June = Math.ceil(timeBefore1June / (1000 * 3600 * 24));
+
+    var timeAfter31August = endDate.getTime() - date2.getTime();
+    var daysAfter31August = Math.ceil(timeAfter31August/ (1000 * 3600 * 24));
+
+
+    if(daysBefore1June > 0)
+    {
+        if(endDate >= date1 && endDate <= date2) {
+            PeriodBetweenJuneAndAugust = PeriodBetweenJuneAndAugust - daysBefore1June;
+            if (PeriodBetweenJuneAndAugust > 21) {
+                ok7 = 0;
+                errorRestrictivePeriod.style.display = "";
+            } else {
+                ok7 = 1;
+                errorRestrictivePeriod.style.display = "none";
+                inputHoliday1June31August.value = "1";
+            }
+        }
+    }
+    else
+    {
+        if((startDate <= date2 && startDate >= date1 )) {
+            if ((endDate <= date2 && endDate >= date1)) {
+                if (Difference_In_Days > 21) {
+                    ok7 = 0;
+                    errorRestrictivePeriod.style.display = "";
+                } else {
+                    ok7 = 1;
+                    errorRestrictivePeriod.style.display = "none";
+                    inputHoliday1June31August.value = "1";
+                }
+            }
+            else {
+                if(Difference_In_Days - daysAfter31August > 21){
+                    ok7 = 0;
+                    errorRestrictivePeriod.style.display = "";
+                } else {
+                    ok7 = 1;
+                    errorRestrictivePeriod.style.display = "none";
+                    inputHoliday1June31August.value = "1";
+                }
+
+                }
+
+            }
+        }
+
+
+    if(ok1 + ok2 + ok3 + ok4  + ok5 + ok6 + ok7 != 7){
         btnRequest.type = "button";
         errorData.style.display = "";
 

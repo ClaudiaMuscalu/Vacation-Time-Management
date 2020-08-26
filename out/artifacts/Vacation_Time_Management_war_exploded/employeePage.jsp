@@ -51,7 +51,7 @@
                         <a href="leaveDepartment.jsp">Leaves in my department</a>
 
 
-                        <a href="adminPage.jsp" id="button-back">Back<i class="fa fa-arrow-left"></i></a>
+                        <a href="adminPage.jsp" id="button-back" style="display: none;">Back<i class="fa fa-arrow-left"></i></a>
 
                     </div>
                 <br>

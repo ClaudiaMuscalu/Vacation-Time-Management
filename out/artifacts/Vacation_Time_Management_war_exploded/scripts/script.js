@@ -20,6 +20,8 @@ var departmentDropdown = document.getElementById("departmentDropdown");
 var leaveDropdown = document.getElementById("leaveDropdown");
 var employeeRole = document.getElementById("employeeRole").value;
 
+var btnBack = document.getElementById("button-back");
+
 if(employeeRole == 2){
     leaveDropdown.style.display = "none";
     addEmployee.style.display = "none";
@@ -30,4 +32,11 @@ else
     leaveDropdown.style.display = "";
     addEmployee.style.display = "";
     departmentDropdown.style.display = "";
+}
+
+if(employeeRole == 1){
+    btnBack.style.display = "none";
+}
+else{
+    btnBack.style.display = "";
 }

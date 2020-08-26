@@ -26,18 +26,15 @@ public class AddEmployee extends HttpServlet {
         String lastName = request.getParameter("lastname");
         String email = request.getParameter("email");
         String jobName = request.getParameter("jobname");
-
         int departmentId = Integer.parseInt(request.getParameter("department"));
         int userType = Integer.parseInt(request.getParameter("usertype"));
 
-        String password = hasherService.hash("1234");
+        String password = hasherService.hash("tech1234");
         Department department = departmentService.get(departmentId);
 
         User user = new User(department.getManagerId(),  userType, department, firstName, lastName, jobName, email, password);
         userService.add(user);
 
-        HttpSession session = request.getSession();
-        session.setAttribute("email", email);
-        response.sendRedirect("successAction.jsp");
+        response.sendRedirect("addEmployee.jsp");
     }
 }

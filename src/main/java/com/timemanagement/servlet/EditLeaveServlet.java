@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 @WebServlet("/EditLeaveServlet")
 public class EditLeaveServlet extends HttpServlet {
@@ -35,6 +37,21 @@ public class EditLeaveServlet extends HttpServlet {
         String status = request.getParameter("status");
         String startDateString = request.getParameter("startDate");
         String endDateString = request.getParameter("endDate");
+
+        java.util.Date date1 = null;
+        Date date2 = null;
+
+        try {
+             date1 = dateFormat.parse("06/01/2021");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            date2 = dateFormat.parse("08/31/2021");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         java.util.Date startDate = null;
         java.util.Date endDate = null;
@@ -67,13 +84,20 @@ public class EditLeaveServlet extends HttpServlet {
         UserService userService = UserService.getInstance();
         User user = userService.get(idUser);
 
-        if(status.equals("disapproved"))
-        {
+        if(status.equals("disapproved")) {
             user.setDaysLeft(user.getDaysLeft() + r.getPeriod());
             user.setPeriodsLeft(user.getPeriodsLeft() + 1);
-            boolean x = userService.update(user);
+            user.setHoliday1June31August(0);
+
         }
 
+//            if(date1.compareTo(startDate) * startDate.compareTo(date2) >= 0 ||
+//                    date1.compareTo(endDate) * endDate.compareTo(date2) >= 0)
+//                user.setHoliday1June31August(1);
+
+
+
+        boolean x = userService.update(user);
         boolean ok = requestService.update(r);
         if(ok){
             response.sendRedirect("successAction.jsp");
