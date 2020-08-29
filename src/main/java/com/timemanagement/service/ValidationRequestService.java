@@ -13,7 +13,7 @@ public class  ValidationRequestService {
         LocalDate dateBefore = LocalDate.parse(date1);
         LocalDate dateAfter = LocalDate.parse(date2);
 
-        long noOfDaysBetween = ChronoUnit.DAYS.between(dateBefore, dateAfter) + 1;
+        long noOfDaysBetween = ChronoUnit.DAYS.between(dateBefore, dateAfter);
 
         return noOfDaysBetween;
     }

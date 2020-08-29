@@ -49,18 +49,19 @@
                             </div>
                         </div>
                         <a href="leaveDepartment.jsp">Leaves in my department</a>
-
+                        <a href="calendar.jsp">Calendar</a>
 
                         <a href="adminPage.jsp" id="button-back" style="display: none;">Back<i class="fa fa-arrow-left"></i></a>
-
                     </div>
                 <br>
                 </div>
 
-                <div class="col-sm-9 container-center"></div>
+                <div class="col-sm-9 container-center">
+
+                </div>
             </div>
         </div>
     </body>
-    <script src="scripts/script.js"></script>
+    <script src="scripts/DropdownScript.js"></script>
 </html>
 

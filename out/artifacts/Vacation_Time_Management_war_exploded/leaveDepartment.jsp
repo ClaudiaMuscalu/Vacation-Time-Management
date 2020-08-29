@@ -55,6 +55,8 @@
                     </div>
                 </div>
                 <a href="leaveDepartment.jsp">Leaves in my department</a>
+                <a href="calendar.jsp">Calendar</a>
+
             </div>
             <br>
         </div>
@@ -96,5 +98,6 @@
     </div>
 </div>
 </body>
-<script src="scripts/script.js"></script>
+<script src="scripts/DropdownScript.js"></script>
+
 </html>
