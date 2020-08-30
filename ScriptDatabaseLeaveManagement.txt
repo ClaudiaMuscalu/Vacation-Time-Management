@@ -1,0 +1,57 @@
+CREATE TABLE Type_of_user(
+		user_type_code int auto_increment primary key, 
+        user_type_name varchar(50));
+        
+ CREATE TABLE Type_of_Leave(
+		leave_type_code int primary key, 
+        description varchar(200));
+ 
+        
+CREATE TABLE User_Leave_Left(
+		user_id int primary key, 
+        days_left int integer(2), 
+        periods_left integer(1),
+        CONSTRAINT 
+        FOREIGN KEY (user_id) REFERENCES(user_id));
+        
+CREATE TABLE Departments(
+		department_id int auto_increment primary key,
+        name varchar(80),
+        manager_id int);
+        
+CREATE TABLE Users(
+		user_id int auto_increment primary key, 
+        department_id int, 
+        user_type_code int,
+        first_name varchar(80), 
+        last_name varchar(80), 
+        email varchar(100), 
+        password varchar(30), 
+        job_name varchar(100), 
+        manager_id int, 
+        CONSTRAINT 
+        foreign key (department_id) REFERENCES DEPARTMENTS(department_id)
+        ON DELETE CASCADE,
+        CONSTRAINT 
+        FOREIGN KEY (manager_id) REFERENCES Users(user_id)
+         ON DELETE set null)
+        ;
+        
+ CREATE TABLE Requests(
+		request_id int auto_increment primary key, 
+        user_id int, 
+        department_id int, 
+        leave_type_code int, 
+        status varchar(30),
+        start_date date, 
+        end_date date, 
+        period  int,
+        CONSTRAINT 
+        foreign key (department_id) REFERENCES DEPARTMENTS(department_id), 
+        CONSTRAINT  FOREIGN KEY (user_id) REFERENCES Users(user_id)
+         ON DELETE CASCADE, 
+         CONSTRAINT  FOREIGN KEY (leave_type_code) REFERENCES Type_of_leave(leave_type_code)
+         ON DELETE CASCADE);
+        
+ 
+        
