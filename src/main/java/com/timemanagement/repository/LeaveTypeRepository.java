@@ -124,6 +124,40 @@ public class LeaveTypeRepository implements IRepository
         }
     }
 
+    public void update(int id, String newName) {
+
+        String updateSQL = "UPDATE type_of_leave SET title = ? WHERE id = ?";
+
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        try {
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(Url, User, Password);
+            statement = connection.prepareStatement(updateSQL);
+
+            statement.setString(1, newName);
+            statement.setInt(2, id);
+
+            statement.executeUpdate();
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (connection != null)
+                    connection.close();
+
+                if (statement != null)
+                    statement.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+    }
+
+
     @Override
     public void delete(int id) {
 

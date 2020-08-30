@@ -94,7 +94,7 @@
                             <div class="mbsc-form-group">
                                 <div class="mbsc-form-group-title"><h4 style="text-align: center;">Leaves in my department</h4></div>
                                 <br>
-                                <div id="demo-marked"></div>
+                                <div id="demo-marked" ></div>
                             </div>
                         </div>
     </div>

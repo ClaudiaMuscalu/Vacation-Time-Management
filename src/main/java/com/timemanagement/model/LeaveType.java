@@ -5,6 +5,10 @@ public class LeaveType {
     public int Id;
     public String Title;
 
+    public LeaveType() {
+
+    }
+
     public LeaveType(int id, String title) {
         Id = id;
         Title = title;
@@ -13,6 +17,7 @@ public class LeaveType {
     public LeaveType(String title) {
         Title = title;
     }
+
 
     public int getId() {
         return Id;

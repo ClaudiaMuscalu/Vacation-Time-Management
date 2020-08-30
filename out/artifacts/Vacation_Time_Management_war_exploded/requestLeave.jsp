@@ -71,7 +71,7 @@
                 <div class="alert alert-info" role="alert">
                     This is a info alert about your leave status
                     <ul>
-                        <li>Days left: <span><%=user.getDaysLeft()%></span></li>
+                        <li>Days left: <span id="textdays"><%=user.getDaysLeft()%>/30</span></li>
                         <li>Periods left: <span><%=user.getPeriodsLeft()%></span></li>
                         <li>1 June - 31 August:
                             <%
@@ -146,6 +146,8 @@
                 <br>
                 <span id="specialPeriod" style="color: darkred; display: none;">You have exhausted this period(1 June -> 31 August)</span>
                 <br>
+
+                <span id="warningLeave"  style="color: darkgreen; display: none;"></span>
                 <button type="submit" class="btn btn-lg btn-primary" id="btn-submit">Process</button>
             </form>
         </div>

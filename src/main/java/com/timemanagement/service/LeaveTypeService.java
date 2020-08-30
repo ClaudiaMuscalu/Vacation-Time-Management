@@ -34,5 +34,7 @@ public class LeaveTypeService {
         leaveTypeRepository.add(item);
     }
 
+    public void update(int id, String newName) { leaveTypeRepository.update(id, newName);}
+
     public void delete(int id) { leaveTypeRepository.delete(id);}
 }

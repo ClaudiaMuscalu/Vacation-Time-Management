@@ -11,6 +11,8 @@ var errorMinimumPeriod = document.getElementById("minPeriodLeave");
 var errorRestrictivePeriod = document.getElementById("restrictivePeriod");
 var inputHoliday1June31August = document.getElementById("holidayBetween1June31Aug");
 var specialPeriod = document.getElementById("specialPeriod");
+var warning = document.getElementById("warningLeave");
+var textdays = document.getElementById("textdays");
 
 var ok1 = 1;
 var ok2 = 1;
@@ -174,7 +176,10 @@ btnRequest.addEventListener("click", function () {
 
     } else {
         errorData.style.display = "none";
+        textdays.innerText = (Difference_In_Days + 1)+ "/" + "30";
+        setTimeout(2000);
         btnRequest.type = "submit";
+
     }
 });
 

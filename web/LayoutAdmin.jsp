@@ -58,6 +58,7 @@
                         <div class="dropdown-container">
                             <a href="addLeaveType.jsp">Add Leave Type</a>
                             <a href="leaveTypes.jsp">Leave Types</a>
+                            <a href="updateLeaveType.jsp">Update leave</a>
                         </div>
                     </div>
 
