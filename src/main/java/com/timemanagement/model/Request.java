@@ -1,7 +1,5 @@
 package com.timemanagement.model;
 
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 public class Request{
@@ -102,14 +100,4 @@ public class Request{
         this.period = period;
     }
 
-
-    private long daysBetweenTwoDates (String date1, String date2){
-
-        LocalDate dateBefore = LocalDate.parse(date1);
-        LocalDate dateAfter = LocalDate.parse(date2);
-
-        long noOfDaysBetween = ChronoUnit.DAYS.between(dateBefore, dateAfter);
-
-        return noOfDaysBetween;
-    }
 }

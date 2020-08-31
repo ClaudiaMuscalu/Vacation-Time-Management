@@ -46,7 +46,8 @@ public class UserRepository implements IRepository {
                             resultset.getString("password"),
                             resultset.getInt("days_left"),
                             resultset.getInt("periods_left"),
-                            resultset.getInt("holiday1June31August"));
+                            resultset.getInt("holiday1June31August"),
+                            resultset.getString("favcolor"));
             }
 
         } catch (ClassNotFoundException | SQLException e) {
@@ -98,7 +99,8 @@ public class UserRepository implements IRepository {
                         resultset.getString("password"),
                         resultset.getInt("days_left"),
                         resultset.getInt("periods_left"),
-                        resultset.getInt("holiday1June31August"));
+                        resultset.getInt("holiday1June31August"),
+                        resultset.getString("favcolor"));
             }
 
         } catch (ClassNotFoundException | SQLException e) {
@@ -123,7 +125,7 @@ public class UserRepository implements IRepository {
 
         User user = (User) obj;
         String insertSQL = "INSERT INTO users (department_id, user_type_code, first_name, last_name," +
-                " email, password, job_name, manager_id) VALUES(?,?,?,?,?,?,?,?)";
+                " email, password, job_name, manager_id, favcolor) VALUES(?,?,?,?,?,?,?,?,?)";
 
         Connection connection = null;
         PreparedStatement statement = null;
@@ -142,6 +144,7 @@ public class UserRepository implements IRepository {
             statement.setString(6, user.getPassword());
             statement.setString(7, user.getJobName());
             statement.setInt(8, dep.getManagerId());
+            statement.setString(9, user.getFavColor());
 
             statement.executeUpdate();
 
@@ -261,7 +264,8 @@ public class UserRepository implements IRepository {
                         resultset.getString("last_name"),
                         resultset.getString("job_name"),
                         resultset.getString("email"),
-                        resultset.getString("password"));
+                        resultset.getString("password"),
+                        resultset.getString("favcolor"));
                 users.add(user);
 
             }

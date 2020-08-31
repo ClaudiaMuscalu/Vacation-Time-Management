@@ -66,7 +66,7 @@ public class LeaveServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         session.setAttribute("user", userId);
-        response.sendRedirect("successAction.jsp");
+        response.sendRedirect("requestLeave.jsp");
 
     }
 

@@ -1,7 +1,12 @@
 <%@ page import="com.timemanagement.service.UserService" %>
 <%@ page import="com.timemanagement.model.User" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ page import="com.timemanagement.model.Request" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.timemanagement.service.RequestService" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.DateFormat" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <html>
 <head>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -14,9 +19,9 @@
         HttpSession requestSession = request.getSession();
         String userEmail = String.valueOf(requestSession.getAttribute("email"));
         User user = userService.get(userEmail);
+        List<User> listOfUsers = userService.getAll();
     %>
 <script>
-    // Ignore this in your implementation
     window.isMbscDemo = true;
 </script>
 
@@ -80,9 +85,17 @@
                 <div class="dropdown">
                     <button href="#"  class="dropdown-btn">The Legend <i class="fa fa-caret-down"></i></button>
                     <div class="dropdown-container">
-                    <a>Color 1</a>
-                    <a>Color 2</a>
-                    <a>Color 3</a>
+                    <ul id="coloritem"></ul>
+                        <% for(User userr: listOfUsers)
+                        {
+                            if(userr.getDepartment().getId() == user.getDepartment().getId())
+                            {
+                                System.out.println(userr.getFavColor());
+                                %>
+                        <div><%=userr.getFirstName()%> <%=userr.getLastName()%><span> <i class="fa fa-arrow-right" aria-hidden="true"></i> </span><input type="color" id="favcolor" name="favcolor" value=<%=userr.getFavColor()%> disabled/></div>
+                           <% }
+
+                        }%>
                     </div>
                 </div>
             </div>
@@ -100,7 +113,10 @@
     </div>
 </div>
 </div>
-
+<%
+    RequestService requestService = RequestService.getInstance();
+    List<Request> approvedLeaves = requestService.getAllApprovedLeaveRequestsForADepartment(user.getDepartment().getId());
+%>
 <script>
 
     mobiscroll.settings = {
@@ -109,31 +125,39 @@
         themeVariant: 'light'  // More info about themeVariant: https://docs.mobiscroll.com/4-10-6/javascript/calendar#opt-themeVariant
     };
 
-    var now = new Date();
-
     mobiscroll.form('#md-form');
 
     mobiscroll.calendar('#demo-marked', {
-        display: 'inline',     // Specify display mode like: display: 'bottom' or omit setting to use default
-        marked: [              // More info about marked: https://docs.mobiscroll.com/4-10-6/javascript/calendar#opt-marked
-            { d: '5/1', color: '#ffc400' },
-            { d: '12/24', color: '#ffee00' },
-            { d: '12/25', color: 'red' },
-            { d: new Date(now.getFullYear(), now.getMonth() + 1, 4) },
-            { d: new Date(now.getFullYear(), now.getMonth() - 2, 13) },
-            { d: new Date(now.getFullYear(), now.getMonth(), 2), color: '#46c4f3' },
-            { d: new Date(now.getFullYear(), now.getMonth(), 6), color: '#7e56bd' },
-            { d: new Date(now.getFullYear(), now.getMonth(), 11), color: '#7e56bd' },
-            { d: new Date(now.getFullYear(), now.getMonth(), 19), color: '#89d7c9' },
-            { d: new Date(now.getFullYear(), now.getMonth(), 28), color: '#ea4986' },
-            { d: new Date(now.getFullYear(), now.getMonth(), 13), color: '#7e56bd' },
-            { d: new Date(now.getFullYear(), now.getMonth(), 13), color: '#f13f77' },
-            { d: new Date(now.getFullYear(), now.getMonth(), 13), color: '#89d7c9' },
-            { d: new Date(now.getFullYear(), now.getMonth(), 13), color: '#8dec7d' },
-            { d: new Date(now.getFullYear(), now.getMonth(), 21), color: '#ffc400' },
-            { d: new Date(now.getFullYear(), now.getMonth(), 21), color: '#8dec7d' },
-            { start: new Date(now.getFullYear(), now.getMonth() + 1, 15), end: new Date(now.getFullYear(), now.getMonth() + 1, 18), color: '#f4511e' }
-        ]
+        display: 'inline',
+        marked: [
+            <%
+            for(Request r : approvedLeaves)
+        {
+            User u = userService.get(r.getUserId());
+            String color = u.getFavColor();
+
+            Date startDate = r.getStartDate();
+
+            String pattern = "MM/dd/yyyy";
+            DateFormat df = new SimpleDateFormat(pattern);
+            String startDateString = df.format(startDate);
+
+            int monthS = Integer.parseInt(startDateString.substring(0,2)) - 1;
+            int dayS = Integer.parseInt(startDateString.substring(3,5));
+            int yearS = Integer.parseInt(startDateString.substring(6,10));
+
+            Date endDate = r.getEndDate();
+            String endDateString = df.format(endDate);
+
+            int monthE = Integer.parseInt(endDateString.substring(0,2)) - 1;
+            int dayE = Integer.parseInt(endDateString.substring(3,5));
+            int yearE = Integer.parseInt(endDateString.substring(6,10));
+
+            System.out.println("startDate: " + dayS + "/" + monthS + "/" + yearS);
+            System.out.println("endDate: " + dayE + "/" + monthE + "/" + yearE);
+            %>
+            { start: new Date(<%=yearS%>, <%=monthS%>, <%=dayS%>), end: new Date(<%=yearE%>,<%=monthE%>, <%=dayE%>), color: '<%=color%>' },
+    <%}%>]
     });
 
 </script>

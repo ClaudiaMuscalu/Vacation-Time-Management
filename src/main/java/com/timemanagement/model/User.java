@@ -14,6 +14,32 @@ public class User {
     private int daysLeft;
     private int periodsLeft;
     private int holiday1June31August;
+    private String favColor;
+
+    public User(){}
+
+    public User(String email, String password) {
+        this();
+        this.email = email;
+        this.password = password;
+    }
+
+    public User(int id, int managerId, int roleId, Department department, String firstName, String lastName,
+                String jobName, String email, String password, int daysLeft, int periodsLeft, int holiday, String favcolor) {
+        this.id = id;
+        this.managerId = managerId;
+        this.roleId = roleId;
+        this.department = department;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.jobName = jobName;
+        this.email = email;
+        this.password = password;
+        this.daysLeft = daysLeft;
+        this.periodsLeft = periodsLeft;
+        this.holiday1June31August = holiday;
+        this.favColor = favcolor;
+    }
 
     public User(int id, int managerId, int roleId, Department department, String firstName, String lastName,
                 String jobName, String email, String password, int daysLeft, int periodsLeft, int holiday) {
@@ -31,14 +57,6 @@ public class User {
         this.holiday1June31August = holiday;
     }
 
-    public User(){}
-
-    public User(String email, String password) {
-        this();
-        this.email = email;
-        this.password = password;
-    }
-
     public User(int managerId, int roleId, Department department, String firstName, String lastName, String jobName,
                 String email, String password) {
         this(email, password);
@@ -50,10 +68,35 @@ public class User {
         this.jobName = jobName;
     }
 
+    public User(int managerId, int roleId, Department department, String firstName, String lastName, String jobName,
+                String email, String password, String favColor) {
+        this(email, password);
+        this.managerId = managerId;
+        this.roleId = roleId;
+        this.department = department;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.jobName = jobName;
+        this.favColor = favColor;
+    }
+
     public User(int id, int managerId, int roleId, Department department, String firstName, String lastName, String jobName,
                 String email, String password) {
         this(managerId, roleId, department, firstName, lastName, jobName, email, password);
         this.id = id;
+    }
+
+    public User(int user_id, int manager_id, int user_type_code, Department department, String first_name, String last_name, String job_name, String email, String password, String favcolor) {
+        this.id = user_id;
+        this.managerId = manager_id;
+        this.roleId = user_type_code;
+        this.department = department;
+        this.firstName = first_name;
+        this.lastName = last_name;
+        this.jobName = job_name;
+        this.email = email;
+        this.password = password;
+        this.favColor = favcolor;
     }
 
     public int getId() {
@@ -142,6 +185,14 @@ public class User {
 
     public void setPeriodsLeft(int periodsLeft) {
         this.periodsLeft = periodsLeft;
+    }
+
+    public String getFavColor() {
+        return favColor;
+    }
+
+    public void setFavColor(String favColor) {
+        this.favColor = favColor;
     }
 
     public int getHoliday1June31August() {

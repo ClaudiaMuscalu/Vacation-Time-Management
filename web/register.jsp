@@ -86,9 +86,15 @@
                             }
                         %>
                     </select>
-                    <br> <br>
+                    <br>
                 </div>
-                <button type="submit"  class="btn btn-lg btn-primary">Submit</button>
+
+                <div class="form-group">
+                    <label for="favcolor">Pick your color:</label>
+                    <input type="color" id="favcolor" name="favcolor" value="#ff0000"/><br><br>
+                </div>
+
+                    <button type="submit"  class="btn btn-lg btn-primary">Submit</button>
             </form>
             <br>
         </body>

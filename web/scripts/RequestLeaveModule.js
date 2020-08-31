@@ -1,5 +1,3 @@
-
-
 var startDateInput = document.getElementById("start");
 var endDateInput = document.getElementById("end");
 var errorStartDate = document.getElementById("wrongStart");

@@ -1,5 +1,3 @@
-
-
 var startDateInput = document.getElementById("start");
 var endDateInput = document.getElementById("end");
 var errorStartDate = document.getElementById("wrongStart");
@@ -177,7 +175,7 @@ btnRequest.addEventListener("click", function () {
     } else {
         errorData.style.display = "none";
         textdays.innerText = (Difference_In_Days + 1)+ "/" + "30";
-        setTimeout(1000);
+        setTimeout(2000);
         btnRequest.type = "submit";
 
     }

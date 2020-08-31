@@ -29,13 +29,15 @@ public class RegisterServlet extends HttpServlet {
         int departmentId = Integer.parseInt(request.getParameter("department"));
         int userType = Integer.parseInt(request.getParameter("usertype"));
         String jobName = request.getParameter("jobName");
+        String colorCode = request.getParameter("favcolor");
+        System.out.println(colorCode);
 
 
         String password = hasherService.hash(request.getParameter("password"));
 
         Department department = departmentService.get(departmentId);
 
-        User user = new User(department.getManagerId(),  userType, department, firstName, lastName, jobName, email, password);
+        User user = new User(department.getManagerId(),  userType, department, firstName, lastName, jobName, email, password, colorCode);
         userService.add(user);
 
         HttpSession session = request.getSession();
